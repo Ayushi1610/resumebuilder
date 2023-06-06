@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
+        <div style="display: flex;flex-direction: row;">
+            <a class="active anchor" style="margin-right: 5px;" href="#">Personal Details</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Education</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Experience</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Skills & Hobbies</a>
+            <a class="active anchor" style="background-color:#2291af ;margin-right: 5px;"  href="#">Awards & Achievements</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Languages Known</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Projects</a>
+        </div>
+        <div class="subroot2" style="margin-top: 2px;margin-bottom: 0px;">
+            <div style="display: flex;flex-direction: row;width: 100%;height: 70px;justify-content: space-between;">
+                <h2
+                    style="color: #4bcef3;margin-top: 20px;margin-left:-110px;letter-spacing: 1;float: left;width: 50%;">
+                    Awards & Achievements</h2>
+                    <div >
+                        <form action="/resume/skipAwards" method="post" style="float: right;">
+                            <input type="hidden" name="user" value="<%=id%>">
+                            <input type="submit" value="Skip &#x2192;" style="width: 70%;margin-left: 0;" >
+                        </form>
+                    <form action="/landing/exit" method="post"  style="float:right;">
+                        <input type="hidden" name="user" value="<%=id%>">
+                        <input type="submit" class="active anchor" value="Exit" style="width: 70%;margin-right: 0;">
+                     </form>
+                   
+                </div>
+            </div>
+            <form action="/resume/deleteAwards" method="post" style="display:flex;justify-content: center;align-items: center;flex-direction: column;width: 100%;">
+                <input type="hidden" name="user" value="<%=id%>">
+            <%result.forEach((row)=>{%>
+                <div class="section2">
+                    
+                   <input type="hidden" name="aid" value="<%=row.awardsid%>">
+                   <div style="width: 100%;">
+                      <span style="color: #2291af;margin-right: 20px;">Valid</span>
+                      <input type="date" name="validfrom" style="width: 20%;margin-right: 50px;"
+                         value="<%=row.validfrom%>">To
+                      <input type="date" name="validto" style="width: 20%;margin-left: 50px;" value="<%=row.validto%>">
+                   </div>
+                   <div class="labeledfield">
+                      <label>Description</label>
+                      <textarea id="limit" name="award_desc"
+                         style="height:50px;border-radius: 5px;width: 97%;margin: 10px;"
+                         name="Content"><%=row.award_desc%></textarea>
+                   </div>
+                </div>
+                <%})%>
+                <input type="submit" value="Delete" style="width: 20%;">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/LandingPage.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/LoginCard.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    </head>
+    
+    <body  class="divContainer img">
+        <% if(message){%>
+            <script>
+                 Swal.fire(
+            '<%=message%>',
+            'You clicked the button!',
+            'warning'
+        )
+            </script>
+            
+            <%}%>
+            <% if(message1){%>
+                <script>
+                     Swal.fire(
+                '<%=message1%>',
+                'You clicked the button!',
+                'warning'
+            )
+                </script>
+                
+                <%}%>
+            <header class="header">
+                <a href="#default" class="logo">
+                    <img src="/images/cv.png">
+                    <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+                </a>
+                <div class="middle">
+                    <a href="#section1">OVERVIEW</a>
+                    <a href="#section2">HOW RESUME BUILDER WORKS</a>
+                    <a href="#section3">FEATURES</a>
+                    <a href="#section4">PLANS</a>
+                    <a href="#section4">CONTACT US</a>
+                  </div>
+                <div class="header-right">
+                  <a id="signin-btn" style="cursor: pointer;">SIGN IN</a>
+                  <a class="active" href="/landing/register" >GET STARTED</a>
+                </div>
+            </header>
+            <div class="main row" id="section1">
+                <div style="display: flex;align-items: center;flex-direction: column;">
+                    <h1 style="margin-bottom: 30px;">RESUME BUILDER</h1>
+                    <div>
+                        <p style="max-width: 900px;letter-spacing: 0.5;">Welcome to our resume builder website! We understand that crafting a professional and compelling resume can be a challenging task, which is why we're here to help. Our user-friendly platform provides a variety of customizable templates and tools to make the resume building process easier for you.</p>
+                        <p style="max-width: 900px;letter-spacing: 0.5;">Fill in online, and download in seconds. Build a professional Design C.V, add ready-to-use suggestions, and get the job. Choose a CV template, fill it out, and download in seconds. Create a professional curriculum vitae in a few clicks. Just pick one of the designed CV templates below, add ready-to-use suggestions, and get the job.</p>
+                    </div>
+                    <img src="/images/gif1.gif" style="width: 300px;height: 250px;margin-top: 40px;">
+                    <div style="margin-top: 50px;">
+                        <a class="active" href="/landing/register" style="border-radius: 5px;padding: 10px 25px 10px 25px;background-color: #4bcef3;color: white;text-decoration: none;">BUILD MY RESUME &#8594;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="main1" id="section2">
+                <h1>HOW RESUME BUILDER WORKS</h1>
+                <h4 style="color:#535c68;letter-spacing: 1;">Just three simple steps</h4>
+                <div style="display: flex;flex-direction: row;margin-top: 50px;">
+                    
+                    <div class="card">
+                       <img src="/images/card1.gif" style="width: 100px;height: 80px;">
+                       <h4>Select a Template</h4>
+                    </div>
+                    <div class="card">
+                        <img src="/images/card2.gif" style="width: 100px;height: 80px;">
+                        <h4>Answer a few questions</h4>
+                    </div>
+                    <div class="card">
+                        <img src="/images/card3.gif" style="width: 100px;height: 80px;">
+                        <h4>Click Finalize and You're done</h4>
+                    </div>
+                </div>        
+            </div>
+        <form action="/landing/insertqueryinfo" id="submit-form" method="post">
+            <div class="main1" id="section4" style="margin-bottom: 150px;">
+                <h1>CONTACT US</h1>
+                <div style="display: flex;flex-direction: column;float: left;width: 800px;;">
+                        <div>
+                            <input type="text" placeholder="First Name" name="fname">
+                            <input type="text" placeholder="Last Name" name="lname">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Mobile Number" name="number" pattern="[0-9]{10}" required>
+                            <input type="email" placeholder="Email" name="mail" required>
+                        </div>
+                    <textarea style="height: 200px;border-radius: 5px;width: 93%;margin: 10px;" placeholder="Write your query here" name="Content"></textarea>
+                    <input type='submit'>
+                </div>
+            </div>
+        </form>
+        <%- include('LoginCard')%>
+        <%- include('adminLogin')%>
+        <script type="text/javascript" src="/javascripts/landing.js">
+        </script>
+        </body>
+</html>

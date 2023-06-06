@@ -1,0 +1,259 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/template2.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+
+<body background="/images/background.jpg" style="font-size: 12px;">
+    <header class="header" style="display: flex;justify-content: space-between;">
+        <a href="#default" class="logo">
+          <img class="himg" src="/images/cv.png" />
+          <div style="margin: 0px 5px 0px 5px;">Resume Builder</div>
+        </a>
+        <div style="display: flex;flex-direction: row;gap: 10px;">
+          <div style="display: flex;justify-content: center;align-items: center;margin: 2px;">
+            <form action="/landing/exit" method="post" style="margin: 0;padding: 0;">
+                <input type="hidden" name="template" value="2">
+              <input type="hidden" name="user" value="<%=result.userid%>">
+            <input type="submit" value="&larr; BACK">
+          </form>
+          </div>
+          <div style="display: flex;justify-content: center;align-items: center;margin:2px">
+            <input type="submit" value="DOWNLOAD" id="btnExport">
+          </div>
+        </div>
+        <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+          <div style="margin-right: 10px;">
+            <%=result.name%>
+          </div>
+          <div><img class="himg" src="/images/profile.png"></div>
+        </div>
+      </header>
+    <div class="root" style="margin: 70px;">
+        <div class="container" style="height:auto;width:55%;box-shadow: 5px 10px 18px #888888;background-color: white;padding:20px;">
+            <div id="template">
+            <div style="height:fit-content;display: flex;flex-direction: row;justify-content: space-between;width: 100%;">
+                <div style="width: 80%;">
+                    <div class="name">
+                        <%=result.fname%>
+                            <%=result.lname%>
+                    </div>
+                    <div class="details">
+                        <%=result.designation%><br>
+                            Address : <%=result.address%><br>
+                                Mob : +91-<%=result.mobile%><br>
+                                    Email Id : <%=result.pemail%><br>
+                    </div>
+                </div>
+                <div style="width: 20%;">
+                    <img src="/images/mitslogo.png" style="width: 150px;">
+                </div>
+            </div>
+            <hr color="black" style="height:5px;margin:5px 0px 5px 0px;">
+            <div>
+                <div>
+                    <div class="heading">Career Objectives</div>
+                    <div>
+                        <%=result.objective%>
+                    </div>
+                </div>
+                <div>
+                    <div class="heading">Academic Credentials</div>
+                    <div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Examination</th>
+                                    <th scope="col">Specialization</th>
+                                    <th scope="col">Year</th>
+                                    <th scope="col">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">High School</th>
+                                    <td></td>
+                                    <td>
+                                        <%=result.ssc_passyear%>
+                                    </td>
+                                    <td>
+                                        <%=result.ssc_per%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Higher Secondary</th>
+                                    <td>
+                                        <%=result.hsc_spec%>
+                                    </td>
+                                    <td>
+                                        <%=result.hsc_passyear%>
+                                    </td>
+                                    <td>
+                                        <%=result.hsc_per%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Under Graduation</th>
+                                    <td>
+                                        <%=result.ug_spec%>
+                                    </td>
+                                    <td>
+                                        <%=result.ug_passyear%>
+                                    </td>
+                                    <td>
+                                        <%=result.ug_cgpa%> CGPA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Post Graduation</th>
+                                    <td>
+                                        <%=result.pg_spec%>
+                                    </td>
+                                    <td>
+                                        <%=result.pg_passyear%>
+                                    </td>
+                                    <td>
+                                        <%=result.pg_cgpa%> CGPA
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <%if(result6.length>0){%>
+                <div>
+                    <div class="heading">Projects</div>
+                    <div>
+                        <%result6.forEach((row)=>{%>
+                            <div style="display: flex;flex-direction:column;margin-bottom: 5px;">
+                                <div style="font-weight: bold;">&#9679; <%=row.projectname%>
+                                </div>
+                                <div style="display: flex;flex-direction:row;">
+                                    <div style="margin:0px 15px 0px 10px"><span style="color:gray;">Role</span> -
+                                        <%=row.role%>
+                                    </div>
+                                    <div><span style="color:gray;">Project Link</span> - <a href="#">
+                                            <%=row.projectlink%>
+                                        </a></div>
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    <%=row.projectdesc%>
+                                </div>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+                <%}%>
+                <%if(result7.length>0){%>
+                <div>
+                    <div class="heading">Experiences</div>
+                    <div>
+                        <%result7.forEach((row)=>{%>
+                            <div style="display: flex;flex-direction:column;margin-bottom: 5px;">
+                                <div style="font-weight: bold;">&#9679; <%=row.company%>&nbsp;<span
+                                            style="color: grey;">( <%=row.timeperiod%> )</span>
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    <%=row.description%>
+                                </div>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+                <%}%>
+                <%if(result2.length>0){%>
+                <div>
+                    <div class="heading">Skills</div>
+                    <div style="display: flex;flex-direction: row;flex-wrap: wrap;">
+                        <%result2.forEach((row)=>{%>
+                            <div style="margin-right:10px;color: rgb(187, 40, 40);">&#9679; <%=row.skill%>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+                <%}%>
+                <%if(result4.length>0){%>
+                <div>
+                    <div class="heading">Awards & Achievemnts</div>
+                    <div>
+                        <%result4.forEach((row)=>{%>
+                            <div style="display: flex;flex-direction:column;margin-bottom: 5px;">
+                                <div style="font-weight: bold;">&#9679; <%=row.validfrom%> - <%=row.validto%>
+                                </div>
+                                <div style="margin-left: 8px;">
+                                    <%=row.award_desc%>
+                                </div>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+                <%}%>
+                <%if(result3.length>0){%>
+                <div>
+                    <div class="heading">Hobbies</div>
+                    <div style="display: flex;flex-direction: row;flex-wrap: wrap;">
+                        <%result3.forEach((row)=>{%>
+                            <div style="margin-right:10px;">&#9679; <%=row.hobbies%>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+                <%}%>
+                <div>
+                    <div class="heading">Languages Known</div>
+                    <div style="display: flex;flex-direction: row;flex-wrap: wrap;">
+                        <%result5.forEach((row)=>{%>
+                            <div style="margin-right:10px;">&#9679; <%=row.languages%>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+        // $("body").on("click", "#btnExport", function () {
+        //     html2canvas($('#template')[0], {
+        //         onrendered: function (canvas) {
+        //             var data = canvas.toDataURL();
+        //             var docDefinition = {
+        //                 content: [{
+        //                     image: data,
+        //                     width: 500,
+        //                     height: 700,
+        //                 }]
+        //             };
+        //             pdfMake.createPdf(docDefinition).download("Resume.pdf");
+        //         }
+        //     });
+        // });
+        document.getElementById('btnExport').addEventListener('click', function () {
+      const element = document.getElementById('template');
+
+      // Set the options for PDF generation
+      const options = {
+        margin: 10,
+        filename: 'resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', orientation: 'portrait' }
+      };
+
+      // Generate the PDF from the div content
+      html2pdf().from(element).set(options).save();
+    });
+    </script>
+</body>
+
+</html>

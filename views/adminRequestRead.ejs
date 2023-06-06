@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorInterface.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div style="display:flex;flex-direction:column;">
+       
+            
+            <form action="/admin/requestRead" method="post" style="display: flex;justify-content: center;align-items: center;">
+                <div style="width: 100%;display: flex;justify-content: center;align-items: center;">
+                    <div
+                        style="display: flex;justify-content: center;align-items: center;width: 100%;height: auto;flex-direction:column;padding: 30px;">
+                        <h1>Contributor Request</h1>
+                        <input type="hidden" value="<%=result.userid%>" name="user">
+                        <div
+                            style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 20px;width: 100%;margin: 8px;">
+                            <div class="labeledfield">
+                                <label>First Name</label>
+                                <input type="text" name="fname" placeholder="First Name" required value="<%=result.fname%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Last Name</label>
+                                <input type="text" name="lname" placeholder="Last Name" value="<%=result.lname%>">
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 20px;width: 100%;">
+                            <div class="labeledfield">
+                                <label>Mobile Number</label>
+                                <input type="text" value="<%=result.mobile%>" name="mobile" placeholder="Mobile Number" required  pattern="[0-9]{10}">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Email" value="<%=result.email%>" required>
+                            </div>
+
+                            <div class="labeledfield">
+                                <label>Plan</label>
+                                <input type="text" name="plan" placeholder="Email" value="<%=result.plan%>" required>
+                            </div>
+                        </div>
+                        <div style="display: flex;flex-direction: row;gap: 20px;width: 98%;margin: 10px;">
+                            <div class="labeledfield">
+                                <label>Description</label>
+                                <textarea placeholder="Description" style="width: 100%;" name="desc" ><%=result.description%></textarea>
+                            </div>
+                        </div>
+                       
+                        <div class="labeledfield">
+                            <label>Template Design</label>
+                           <input type="file" value="/images/<%=result.file%>">
+                            </div>
+                          
+                    </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>

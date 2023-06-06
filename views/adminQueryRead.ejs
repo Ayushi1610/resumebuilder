@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/UserInterface.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/updateProfile.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/LandingPage.css">
+
+</head>
+
+<body background="/images/background.jpg">
+    <div class="main1" id="section4" style="margin-bottom: 150px;width: 100%;">
+        <h1>CONTACT US</h1>
+        <div style="display: flex;flex-direction: column;float: left;width: 60%;">
+
+
+            <label>Name</label>
+            <input type="text" placeholder="Name" name="name" value="<%=result.name%>" style="width: 100%;">
+
+
+            <label>Mobile Number</label>
+            <input style="width: 100%;" type="tel" placeholder="Mobile Number" name="number" pattern="[0-9]{10}" value="<%=result.mobileno%>"
+                required>
+
+
+            <label>Email</label>
+            <input style="width: 100%;" type="email" placeholder="Email" name="mail" required value="<%=result.email%>">
+
+            <label>Query</label>
+            <textarea style="height: 200px;border-radius: 5px;width: 100%;margin: 10px;"
+                placeholder="Write your query here" name="Content"><%=result.review%></textarea>
+        </div>
+    </div>
+
+</body>
+
+</html>

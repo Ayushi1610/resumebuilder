@@ -1,0 +1,35 @@
+<form action="/landing/updateprofile/<%=result.userid%>" method="post" >
+<div class="container" id="update-profile">
+    <div class="root">
+        <div style="display: flex;align-items: flex-end;justify-content: flex-end;">
+            <input class="close" type="button" value="X" id="popup-close">
+        </div>
+        <div style="display: flex;align-items: center;flex-direction: column;justify-content: center;">
+            <div style="width: 80%;display: flex;align-items: center;flex-direction: column;justify-content: center;">
+            <img src="/images/profile.png" style="height: 70px;width: 70px;margin-bottom: 20px;">
+            <hr>
+        </div>
+            <div class="section" style="margin-top: 20px;">
+                <label>Name</label>
+                <input type="text" name="uname" value="<%=result.name%>">
+            </div>
+            <div class="section">
+                <label>Email</label>
+                <input type="email" name="mail" value="<%=result.email%>">
+            </div>
+            <div class="section">
+                <label>Password</label>
+                <p class="inputicons" style="display: flex;flex-direction: row;">
+                <i class="fa fa-eye icon" id="eye"></i>
+                <input type="password" name="password" value="<%=result.password%>" name="password" id="password" style="padding-left: 25px;">
+            </p>
+            </div>
+            <div class="section">
+                <label>Registered As</label>
+                <input type="text" name="type" disabled value="<%=result.type%>">
+            </div>
+            <input class="submit" type="submit" onclick="login_again()" value="Update">
+        </div>
+    </div>
+</div>
+</form>

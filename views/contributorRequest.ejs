@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorInterface.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: white;">
+    <div style="display:flex;flex-direction:column;">
+        <header class="header">
+            <a href="#default" class="logo">
+                <img src="/images/cv.png" />
+                <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+            </a>
+            <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+                <div style="margin-right: 10px;">
+                    <%=result.name%>
+                </div>
+                <div><img src="/images/profile.png"></div>
+            </div>
+        </header>
+        <div style="display: flex;flex-direction: row;">
+            <aside>
+                <p> MENU </p>
+                <form action="/landing/contributorInterface" method="post">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="WHAT WE DO">
+                </form>
+                <form action="/landing/plan" method="post">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PLANS">
+                </form>
+                <form action="/landing/contribute" method="post" class="special">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="CONTRIBUTE" style="color: #2291af;">
+                </form>
+                <form action="/landing/report" method="post">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="REPORT">
+                </form>
+                <form action="/landing/contributorProfile" method="post">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PROFILE">
+                </form>
+            </aside>
+            <form action="/resume/submitRequest" method="post"  enctype="multipart/form-data" style="width:85%;display: flex;justify-content: center;align-items: center;">
+                <div style="width: 100%;display: flex;justify-content: center;align-items: center;">
+                    <div
+                        style="display: flex;justify-content: center;align-items: center;background-color: white;width: 100%;height: auto;flex-direction:column;padding: 30px;">
+                        <h1>Request Form</h1>
+                        <input type="hidden" value="<%=result.userid%>" name="user">
+                        <div
+                            style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 20px;width: 100%;margin: 8px;">
+                            <div class="labeledfield">
+                                <label>First Name</label>
+                                <input type="text" name="fname" placeholder="First Name" required>
+                            </div>
+                            <div class="labeledfield">
+                                <label>Last Name</label>
+                                <input type="text" name="lname" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 20px;width: 100%;">
+                            <div class="labeledfield">
+                                <label>Mobile Number</label>
+                                <input type="text" name="mobile" placeholder="Mobile Number" required  pattern="[0-9]{10}">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Email" value="<%=result.email%>" required>
+                            </div>
+
+                        </div>
+                        <div style="display: flex;flex-direction: row;gap: 20px;width: 98%;margin: 10px;">
+                            <select required name="plan">
+                                <option <%=plan ? 'disabled' : ' ' %>>Choose Plan</option>
+                                <option value="No Cost Plan" <%=plan=='No Cost Plan' ? 'selected' : 'disabled' %>>No
+                                    Cost Plan</option>
+                                <option value="Royalty Plan" <%=plan=='Royalty' ? 'selected' : 'disabled' %>>Royalty
+                                    Plan</option>
+                                <option value="Call to action plan" <%=plan=='Call to Action' ? 'selected' : 'disabled'
+                                    %>>Call to Action Plan</option>
+                            </select>
+                        </div>
+                        <div style="display: flex;flex-direction: row;gap: 20px;width: 98%;margin: 10px;">
+                            <div class="labeledfield">
+                                <label>Description</label>
+                                <textarea placeholder="Description" style="width: 100%;" name="desc" ></textarea>
+                            </div>
+                        </div>
+                        <%if(plan=='No Cost Plan'){%>
+                        <div style="display: flex;flex-direction: row;gap: 20px;width: 100%;margin: 10px;">
+                            <div style="color:#2291af;margin-left: 15px;">Upload Template Design</div>
+                            <label for="choose-design" class="custom-file-upload" id="choose-file-label"
+                                style="width: 50%;display:flex;align-items: center;justify-content: center;">
+                                Upload
+                            </label>
+                           
+                            <input  type="file" name="design" id="choose-design"
+                                accept=".jpg,.jpeg,.pdf,doc,docx,.png" style="display: none;" />
+                            </div>
+                            <%}%>
+                            <%if(plan == 'Royalty' || plan == 'Call to Action'){%>
+                        <div style="display: flex;flex-direction: row;gap: 20px;width: 100%;">
+                            <div style="color:#2291af;margin-left: 15px;">Upload Code Here</div>
+                            <label for="choose-code" class="custom-file-upload" id="choose-file-label"
+                                style="width: 50%;display:flex;align-items: center;justify-content: center;">
+                                Upload
+                            </label>
+                            <input  type="file" name="design" id="choose-code" accept=".txt"
+                                style="display: none;"/>
+                            </div>
+                            <%}%>
+                        <input type="submit"
+                            style="color: white;background-color: #2291af;border-radius: 5px;padding: 10px;margin-top:10px;width: 20%;">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $('#choose-design').change(function () {
+            var i = $(this).prev('label').clone();
+            var file = $('#choose-design')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+    });
+    $(document).ready(function () {
+        $('#choose-code').change(function () {
+            var i = $(this).prev('label').clone();
+            var file = $('#choose-code')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+    });
+</script>
+
+</html>

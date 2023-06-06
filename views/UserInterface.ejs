@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/UserInterface.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/updateProfile.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+
+<body background="/images/background.jpg">
+  <% if(message){%>
+    <script>
+      console.log("MESSAGE : ",'<%=message%>')
+         Swal.fire(
+    '<%=message%>',
+    'You clicked the button!',
+    'question'
+)
+    </script>
+    <%}%>
+    <% if(message1){%>
+      <script>
+        console.log("MESSAGE : ",'<%=message1%>')
+           Swal.fire(
+      '<%=message1%>',
+      'You clicked the button!',
+      'success'
+  )
+      </script>
+      <%}%>
+    <header class="header">
+        <a href="#default" class="logo">
+            <img src="/images/cv.png" />
+            <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+        </a>
+        <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+          <div >
+            <a href="/landing/Home"  style="background-color: #dfe4ea;">LOGOUT</a>
+          </div>
+            <div style="margin-right: 10px;">
+                <%=result.name%>
+            </div>
+            <div><img src="/images/profile.png"></div>
+        </div>
+    </header>
+    <div class="ag-format-container">
+    
+    <div class="ag-courses_box" style="padding-top:70px ;">
+        <div class="ag-courses_item">
+            <div class="ag-courses-item_link">
+              <div class="ag-courses-item_bg"></div>
+              <input id="view-profile" type="button" value="View/Update Profile"  class="ag-courses-item_title" style="min-height: 65px;border: none;background: transparent;cursor: pointer;">
+              <div class="ag-courses-item_profile-box">
+                <span class="ag-courses-profile_name">
+                 <%=result.name%>
+                </span>
+              </div>
+            </div>
+          </div>
+    </div>
+    <form action="/landing/personalDetails" method="get">
+    <div class="ag-courses_box" style="padding-top:70px ;">
+        <div class="ag-courses_item">
+            <input type="hidden" name="userid" value="<%=id%>" >
+            <div  class="ag-courses-item_link">
+              <div class="ag-courses-item_bg"></div>
+              <input type="submit" style="border: none;background: transparent;cursor: pointer;" class="ag-courses-item_title" value="Insert Resume Details">
+            </div>
+          </div>
+    </div>
+</form>
+<form action="/landing/ResumeDetails" method="get">
+    <div class="ag-courses_box" style="padding-top:70px ;">
+        <div class="ag-courses_item">
+          <input type="hidden" name="userid" value="<%=id%>" >
+            <div class="ag-courses-item_link">
+              <div class="ag-courses-item_bg"></div>
+              <input type="submit" style="border: none;background: transparent;cursor: pointer;" class="ag-courses-item_title" value="Update Resume Details" >
+            </div>
+          </div>
+    </div>
+  </form>
+  <form action="/resume/dpersonalDetails" method="post">
+  <div class="ag-courses_box">
+    <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <input type="hidden" name="userid" value="<%=id%>" >
+          <input type="submit" style="border: none;background: transparent;cursor: pointer;" class="ag-courses-item_title" value="Delete Resume Details">
+        </a>
+      </div>
+  </div>
+  </form>
+<form action="/resume/buildresume" method="post">
+<div class="ag-courses_box">
+  <div class="ag-courses_item">
+      <a href="#" class="ag-courses-item_link">
+        <div class="ag-courses-item_bg"></div>
+          <input type="hidden" name="userid" value="<%=id%>" >
+          <input type="hidden" name="templateid" value="<%=templateid%>" >
+          <input type="submit" style="border: none;background: transparent;cursor: pointer;" class="ag-courses-item_title" value="Build Resume">
+      </a>
+    </div>
+</div>
+</form>
+<form action="/landing/chooseTemplate" method="post">
+    <div class="ag-courses_box">
+        <div class="ag-courses_item">
+          <a href="#" class="ag-courses-item_link">
+            <div class="ag-courses-item_bg"></div>
+              <input type="hidden" name="userid" value="<%=id%>" >
+              <input type="submit" style="border: none;background: transparent;cursor: pointer;" class="ag-courses-item_title" value="Choose Template">
+          </a>
+          </div>
+    </div>
+  </form> 
+    <div class="ag-courses_box">
+        <div class="ag-courses_item">
+            <a href="#" class="ag-courses-item_link">
+              <div class="ag-courses-item_bg"></div>
+          <input type="button" id="feedback" style="border: none;background: transparent;cursor: pointer;" class="ag-courses-item_title" value="Feedback">
+            </a>
+          </div>
+    </div>
+  
+    
+</div>
+<%-include('updateProfile')%>
+<%-include('userFeedback')%>
+<script type="text/javascript" src="/javascripts/updateProfile.js"></script>
+</body>
+
+</html>

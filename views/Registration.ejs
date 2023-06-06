@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="/images/background.jpg">
+    <form action="/landing/insertregisterinfo" id="register-form" method="post">
+        <div class="common">
+            <div class="card">
+                <img src="/images/register.png" style="width:100px;height:80px;margin-top: 20px;">
+                <h3 style="color:#4bcef3;letter-spacing:1;margin-top: 10px;">CREATE ACCOUNT</h3>
+                <div
+                    style="display: flex;flex-direction: column;width: 100%;padding: 10px;justify-content: center;align-items: center;">
+                    <input type="text" placeholder="Your Name" name="name" required>
+                    <input type="email" placeholder="Your Email" name="mail" required>
+                    <div class="inputicons">
+                        <i class="fa fa-eye icon" id="eye"></i>
+                        <input type="password" placeholder="Create Your Password"
+                            style="padding-left: 25px;width: 100%;" name="password" id="password" required>
+                    </div>
+                    <select required name="type">
+                        <option>Register As </option>
+                        <option value="user">New User</option>
+                        <option value="contributor">Contributor</option>
+                    </select>
+                    <input type="submit" >
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        const passwordInput = document.querySelector("#password")
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function () {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordInput.setAttribute("type", type)
+        })
+        
+
+    </script>
+</body>
+
+</html>

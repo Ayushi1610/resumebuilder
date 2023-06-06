@@ -1,0 +1,1148 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/adminInterface.css" />
+   
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorPlans.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f6549854b5.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    .heading{
+    font-size: 20px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#2291af, #4bcef3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card1{
+    background-color: #55cdef40;
+}
+.card2{
+    background-color: #55cdef40;
+}
+.card1:hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    background-color: #55ceef79;
+}
+.card2:hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    background-color: #55ceef79;
+}
+
+    * {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+    *:before,
+    *:after {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+    .table {
+        --bs-table-striped-bg: #a5dae929;
+        overflow: hidden;
+    }
+
+    .oneliner {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<body style="margin: 0;padding: 0;">
+    <header class="header">
+        <a href="#default" class="logo">
+            <img src="/images/cv.png" />
+            <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+        </a>
+        <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+            <div>
+                <a href="/landing/Home" style="background-color: #dfe4ea;">LOGOUT</a>
+            </div>
+            <div style="margin-right: 10px;">
+
+            </div>
+            <div><img src="/images/profile.png"></div>
+        </div>
+    </header>
+    <div style="display: flex;flex-direction: row;" id="section1">
+        <aside>
+            <a class="active anchor" href="#section1">Progress Report</a>
+            <a class="active anchor" href="#section2">User</a>
+            <a class="active anchor" href="#section3">Contribitor</a>
+            <a class="active anchor" href="#section4">Resume Details</a>
+            <a class="active anchor" href="#section5">Feedbacks</a>
+            <a class="active anchor" href="#section6">Request</a>
+            <a class="active anchor" href="#section7">Queries</a>
+            <a class="active anchor" href="#section8">Plans</a>
+        </aside>
+        <div class="right">
+            <div style="display: flex;flex-direction: row;gap: 10px;justify-content: center;">
+                <div class="acard1" style="position: relative;overflow: hidden;">
+                    <div style="position: absolute;top:0;width: 100%;height: 100%;left: 2.5%;">
+                        <img style="width: 95%;height: 100%;" src="/images/dashboardgraph.png">
+                    </div>
+                    <div class="cardhead" style="font-size: 28px;">
+                        Welcome, Admin
+                    </div>
+                </div>
+                <div class="acard1">
+                    <div class="cardhead">
+                        <%=usercount%>
+                    </div>
+                    <div style="margin: 20px;letter-spacing: 1;color: #126176;font-size: 18px;">Number of Users</div>
+                </div>
+                <div class="acard1">
+                    <div class="cardhead">
+                        <%=contributorcount%>
+                    </div>
+                    <div style="margin: 20px;letter-spacing: 1;color: #126176;font-size: 18px;">Number of Contributors
+                    </div>
+                </div>
+                <div class="acard1">
+                    <div class="cardhead">
+                        <%=templatecount%>
+                    </div>
+                    <div style="margin: 20px;letter-spacing: 1;color: #126176;font-size: 18px;">Number of Templates
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                <%const
+                    monthName=["January","February","March","April","May","June","July","August","September","October","November","December"];
+                    let name=monthName[month];%>
+                    <div class="cardhead" style="margin: 20px 0px 20px 0px;">Target Month : <%=name%>
+                    </div>
+                    <div style="display: flex;flex-direction: row;gap: 30px;margin: 0px 0px 20px 0px;">
+
+                        <div>Target User : 50/month</div>
+                        <div>Target Contributors : 15/month</div>
+                        <span class="dot"></span>Users
+                        <span class="dot" style="background-color: yellow;"></span>Contributors
+                    </div>
+                    <%const userper=Math.round((graph1count/50)*100)%>
+                        <%const contrper=Math.round((graph2count/15)*100)%>
+                            <div style="display: flex;flex-direction: row;gap: 40px;margin:0px 0px 0px 20px;justify-content: center;">
+                                <div class="pie no-round" style="--p:<%=userper%>;--c:#067775;--b:15px;">
+                                    <span style="z-index: 10;"><%=userper%>%</span>
+                                </div>
+                                <div class="pie no-round" style="--p:<%=contrper%>;--c:yellow;--b:15px">
+                                    <span style="z-index: 10;"><%=contrper%>%</span>
+                                </div>
+
+                            </div>
+            </div>
+            <div id="section2" style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">Users
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date Registered</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno=1;%>
+                            <%if(userData.length>0){%>
+                                <%userData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td>
+                                            <%=row.name%>
+                                        </td>
+                                        <td>
+                                            <%=row.email%>
+                                        </td>
+                                        <td>
+                                            <%=row.password%>
+                                        </td>
+                                        <td>
+                                            <%=row.type%>
+                                        </td>
+                                        <td>
+                                            <%=row.date%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/userUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteUser" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="section3"  style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">Contributors
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date Registered</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno1=1;%>
+                            <%if(contributorData.length>0){%>
+                                <%contributorData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno1%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td>
+                                            <%=row.name%>
+                                        </td>
+                                        <td>
+                                            <%=row.email%>
+                                        </td>
+                                        <td>
+                                            <%=row.password%>
+                                        </td>
+                                        <td>
+                                            <%=row.type%>
+                                        </td>
+                                        <td>
+                                            <%=row.date%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/userUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteUser" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno1++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="section4"  style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">Users Resume Details
+                </div>
+                <div class="cardhead2">Personal Details</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">First Name </th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">LinkedIn</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Objective</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno2=1;%>
+                            <%if(personalData.length>0){%>
+                                <%personalData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno2%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.fname%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.lname%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.pemail%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.mobile%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.designation%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.linkedin%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.address%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.objective%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.photo%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/personalUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deletePersonal" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno2++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+
+                    </tbody>
+                </table>
+                <div class="cardhead2">Education Details</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">SSC</th>
+                            <th scope="col">SSC %</th>
+                            <th scope="col">HSC</th>
+                            <th scope="col">HSC %</th>
+                            <th scope="col">HSC Spec</th>
+                            <th scope="col">UG</th>
+                            <th scope="col">UG CGPA</th>
+                            <th scope="col">UG Spec</th>
+                            <th scope="col">PG</th>
+                            <th scope="col">PG CGPA</th>
+                            <th scope="col">PG Spec</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno3=1;%>
+                            <%if(educationData.length>0){%>
+                                <%educationData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno3%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.ssc_passyear%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.ssc_per%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.hsc_passyear%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.hsc_per%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.hsc_spec%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.ug_passyear%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.ug_cgpa%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.ug_spec%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.pg_passyear%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.pg_cgpa%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.pg_spec%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/educationUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteEducation" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno3++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+
+                    </tbody>
+                </table>
+                <div class="cardhead2">Awards & Achievements</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Award id</th>
+                            <th scope="col">Valid From</th>
+                            <th scope="col">Valid To</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno4=1;%>
+                            <%if(awardsData.length>0){%>
+                                <%awardsData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno4%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.awardsid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.validfrom%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.validto%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.award_desc%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/awardsUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.awardsid%>" name="aid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteAwards" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.awardsid%>" name="aid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno4++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+                    </tbody>
+                </table>
+                <div class="cardhead2">Experience Details</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Experience id</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Timeperiod</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno5=1;%>
+                            <%if(experienceData.length>0){%>
+                                <%experienceData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno5%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.experienceid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.company%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.timeperiod%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.description%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/experienceUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.experienceid%>" name="exid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteExperience" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.experienceid%>" name="exid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno5++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+                    </tbody>
+                </table>
+                <div class="cardhead2">Project Details</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Project id</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Project Link</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno6=1;%>
+                            <%if(projectData.length>0){%>
+                                <%projectData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno6%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.projectid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.projectname%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.role%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.projectlink%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.projectdesc%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/projectUpdate" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.projectid%>" name="pid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteProject" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.projectid%>" name="pid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno6++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+                    </tbody>
+                </table>
+                <div style="display: flex;flex-direction: row;width: 100%;gap:20px;">
+                    <div style="width: 35%;">
+                        <div class="cardhead2">Skills</div>
+                        <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S.No.</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Skill id</th>
+                                    <th scope="col">Skill</th>
+                                    <th scope="col">Edit/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%let sno7=1;%>
+                                    <%if(skillData.length>0){%>
+                                        <%skillData.forEach((row)=>{%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%=sno7%>
+                                                </th>
+                                                <td>
+                                                    <%=row.userid%>
+                                                </td>
+                                                <td class="oneliner">
+                                                    <%=row.skillid%>
+                                                </td>
+                                                <td class="oneliner">
+                                                    <%=row.skill%>
+                                                </td>
+                                                <td style="display: flex;flex-direction: row;">
+                                                    <form action="/admin/skillUpdate" method="post">
+                                                        <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                        <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                        <input type="hidden" value="<%=result.password%>" name="apass">
+                                                        <input type="hidden" value="<%=row.skillid%>" name="sid">
+                                                        <button
+                                                            style="border: none;color: #2291af;background: transparent;"
+                                                            type="submit"><i
+                                                                class="fa-regular fa-pen-to-square"></i></button>
+                                                    </form>
+                                                    <form action="/admin/deleteskill" method="post">
+                                                        <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                        <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                        <input type="hidden" value="<%=result.password%>" name="apass">
+                                                        <input type="hidden" value="<%=row.skillid%>" name="sid">
+                                                        <button
+                                                            style="border: none;color: #2291af;background: transparent;"
+                                                            type="submit"
+                                                            onclick="return confirm('Are you sure you want to delete?')"><i
+                                                                class="fa-regular fa-trash-can"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <%sno7++%>
+                                                <%})%>
+                                                    <%}else{%>
+                                                        <h3>Data Not Found!!</h3>
+                                                        <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width: 35%;">
+                        <div class="cardhead2">Hobbies</div>
+                        <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S.No.</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Hobby</th>
+                                    <th scope="col">Edit/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%let sno8=1;%>
+                                    <%if(hobbyData.length>0){%>
+                                        <%hobbyData.forEach((row)=>{%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%=sno8%>
+                                                </th>
+                                                <td>
+                                                    <%=row.userid%>
+                                                </td>
+                                                <td class="oneliner">
+                                                    <%=row.hobbyid%>
+                                                </td>
+                                                <td class="oneliner">
+                                                    <%=row.hobbies%>
+                                                </td>
+                                                <td style="display: flex;flex-direction: row;">
+                                                    <form action="/admin/hobbyUpdate" method="post">
+                                                        <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                        <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                        <input type="hidden" value="<%=result.password%>" name="apass">
+                                                        <input type="hidden" value="<%=row.hobbyid%>" name="hid">
+                                                        <button
+                                                            style="border: none;color: #2291af;background: transparent;"
+                                                            type="submit"><i
+                                                                class="fa-regular fa-pen-to-square"></i></button>
+                                                    </form>
+                                                    <form action="/admin/deleteHobby" method="post">
+                                                        <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                        <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                        <input type="hidden" value="<%=result.password%>" name="apass">
+                                                        <input type="hidden" value="<%=row.hobbyid%>" name="hid">
+                                                        <button
+                                                            style="border: none;color: #2291af;background: transparent;"
+                                                            type="submit"
+                                                            onclick="return confirm('Are you sure you want to delete?')"><i
+                                                                class="fa-regular fa-trash-can"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <%sno8++%>
+                                                <%})%>
+                                                    <%}else{%>
+                                                        <h3>Data Not Found!!</h3>
+                                                        <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width: 30%;">
+                        <div class="cardhead2">Languages Known</div>
+                        <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S.No.</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Language</th>
+                                    <th scope="col">Edit/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%let sno9=1;%>
+                                    <%if(languageData.length>0){%>
+                                        <%languageData.forEach((row)=>{%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%=sno9%>
+                                                </th>
+                                                <td>
+                                                    <%=row.userid%>
+                                                </td>
+                                                <td class="oneliner">
+                                                    <%=row.languagesid%>
+                                                </td>
+                                                <td class="oneliner">
+                                                    <%=row.languages%>
+                                                </td>
+                                                <td style="display: flex;flex-direction: row;">
+                                                    <form action="/admin/languageUpdate" method="post">
+                                                        <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                        <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                        <input type="hidden" value="<%=result.password%>" name="apass">
+                                                        <input type="hidden" value="<%=row.languagesid%>" name="lid">
+                                                        <button
+                                                            style="border: none;color: #2291af;background: transparent;"
+                                                            type="submit"><i
+                                                                class="fa-regular fa-pen-to-square"></i></button>
+                                                    </form>
+                                                    <form action="/admin/deleteLanguage" method="post">
+                                                        <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                        <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                        <input type="hidden" value="<%=result.password%>" name="apass">
+                                                        <input type="hidden" value="<%=row.languagesid%>" name="lid">
+                                                        <button
+                                                            style="border: none;color: #2291af;background: transparent;"
+                                                            type="submit"
+                                                            onclick="return confirm('Are you sure you want to delete?')"><i
+                                                                class="fa-regular fa-trash-can"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <%sno9++%>
+                                                <%})%>
+                                                    <%}else{%>
+                                                        <h3>Data Not Found!!</h3>
+                                                        <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="section5"  style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">Feedbacks</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Feedback Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Mobile Number</th>
+                            <th scope="col">Read/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno10=1;%>
+                            <%if(feedbackData.length>0){%>
+                                <%feedbackData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno10%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.feedbackid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.name%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.email%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.feedback%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/feedbackRead" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.feedbackid%>" name="fid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-file"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteFeedback" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.feedbackid%>" name="fid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno10++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="section6"  style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">Contributor Requests</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Request Id</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Mobile Number</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Plan</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">File</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno12=1;%>
+                            <%if(requestData.length>0){%>
+                                <%requestData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno12%>
+                                        </th>
+                                        <td>
+                                            <%=row.userid%>
+                                        </td>
+                                        <td>
+                                            <%=row.requestid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.fname%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.lname%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.mobile%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.email%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.plan%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.description%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.file%>
+                                        </td>
+                                        <%if(row.status=='Approved'){%>
+                                        <td class="oneliner" style="color: green;">
+                                          
+                                            <%=row.status%>
+                                        </td>
+                                        <%}else if(row.status=='Cancelled'){%>
+                                            <td class="oneliner" style="color: red;">
+                                          
+                                                <%=row.status%>
+                                            </td>
+                                        <%}else{%>
+                                            <td class="oneliner">
+                                                Pending...
+                                            </td>
+                                            <%}%>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/requestRead" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.requestid%>" name="rid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-file"></i></button>
+                                            </form>
+                                            <form action="/admin/approveRequest" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.requestid%>" name="rid">
+                                                <button style="border: none;color: green;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to approve?')"><i class="fa-solid fa-check"></i></button>
+                                            </form>
+                                            <form action="/admin/cancelRequest" method="post">
+                                                <input type="hidden" value="<%=row.userid%>" name="userid">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.requestid%>" name="rid">
+                                                <button style="border: none;color: red;background:transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to cancel?')"><i class="fa-solid fa-xmark"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno12++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="section7"  style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">User Queries</div>
+                <table class="table table-striped table-hover table-sm" style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">Contact Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Mobile Number</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Query</th>
+                            <th scope="col">Read/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%let sno11=1;%>
+                            <%if(queryData.length>0){%>
+                                <%queryData.forEach((row)=>{%>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=sno11%>
+                                        </th>
+                                        <td>
+                                            <%=row.contactid%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.name%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.email%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.mobileno%>
+                                        </td>
+                                        <td class="oneliner">
+                                            <%=row.review%>
+                                        </td>
+                                        <td style="display: flex;flex-direction: row;">
+                                            <form action="/admin/queryRead" method="post">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.contactid%>" name="cid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"><i class="fa-regular fa-file"></i></button>
+                                            </form>
+                                            <form action="/admin/deleteQuery" method="post">
+                                                <input type="hidden" value="<%=result.email%>" name="aemail">
+                                                <input type="hidden" value="<%=result.password%>" name="apass">
+                                                <input type="hidden" value="<%=row.contactid%>" name="cid">
+                                                <button style="border: none;color: #2291af;background: transparent;"
+                                                    type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <%sno11++%>
+                                        <%})%>
+                                            <%}else{%>
+                                                <h3>Data Not Found!!</h3>
+                                                <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="section8"  style="padding-top: 30px;">
+                <div class="cardhead" style="margin: 20px 0px 20px 0px;">Plans</div>
+                <div style="display: flex;flex-direction: row;height: 350px;gap: 40px;margin: 0px 30px 40px 30px ;">
+                    <div class="card1" style="width:50%;height: 100%;">
+                        <div class="heading">NO COST PLAN</div>
+                        <div style="font-size: 16px;padding: 25px;">
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Normal Design.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Basic Customization Options.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload in image or pdf format.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> If your approved template will be used by atleast 3 users then you will get benefited.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Copyright will be mentioned on the
+                                template.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Performance based goddies
+                                available.</p>
+                        </div>
+                       
+                    </div>
+                    <div class="card2" style="width: 50%;height: 100%;">
+                        <div class="heading">CALL TO ACTION</div>
+                        <div class="heading">PLAN</div>
+                        <div style="font-size: 16px;padding: 25px;">
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> High Quality Design</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Design in our requested format
+                                only.
+                            </p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Design template in HTML, CSS and
+                                JavaScript.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload code in text file.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Cost based on the number of times
+                                their
+                                template designs are downloaded or used by users.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Additional goddies.</p>
+                            <p>&#x27A2; &#x20b9; 29 per template.</p>
+                        </div>
+                       
+                    </div>
+                    <div class="card1" style="width: 50%;height: 100%;">
+                        <div class="heading">ROYALTY PLAN</div>
+                        <div style="font-size: 16px;padding: 25px;">
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> High Quality Design</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Design template in HTML, CSS and
+                                JavaScript.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload code in text file.</p>
+                            <p><span style="color: #0c6f8b;">&#x27A2;</span> Cost based on the number of times
+                                their
+                                template designs are downloaded or used by users.</p>
+                            <p>&#x27A2; &#x20b9; 19 per template.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

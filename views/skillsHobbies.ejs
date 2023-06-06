@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div class="root">
+        <div class="subroot1 links">
+            <h2 style="color: #4bcef3;letter-spacing: 1;">Resume Details</h2>
+            <form action="/landing/navpersonal" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Personal Details">
+                </form>
+                <form action="/landing/naveducation" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Education">
+                </form>
+                <form action="/landing/navexperience" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Experience">
+                </form>
+                <form action="/landing/navskillshobbies" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="background-color:#2291af ;padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Skills & Hobbies">
+                </form>
+                <form action="/landing/navawards" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Awards & Achievements">
+                </form>
+                <form action="/landing/navlanguages" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Languages Known">
+                </form>
+                <form action="/landing/navprojects" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Projects">
+                </form>
+                <form action="/landing/exit" method="post" >
+                    <input type="hidden" name="user" value="<%=id%>">
+                    <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Exit">
+                 </form>
+        </div>
+        <form action="/resume/insertskillhobbydetails" method="post">
+            <div class="subroot2">
+                <h2 style="color: #4bcef3;">Skills & Hobbies</h2>
+                <input type="hidden" name="user" value="<%=id%>">
+                <div class="section2">
+                    <h4 style="color: #2291af;letter-spacing: 1;">Add Skills</h4>
+                    <div id="skill_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;"></div>
+                    <div style="display: flex;flex-direction: row;width:40%;">
+                        <input type="button" value="Add Skills +" onclick="skill_fields()" class="active anchor"
+                            style="border-radius: 5px;padding: 2px 2px;width:50%;cursor: pointer;border: none;height: 35px;"></input>
+                    </div>
+                </div>
+                <div class="section2">
+                    <h4 style="color: #2291af;letter-spacing: 1;">Add Hobbies</h4>
+                    <div id="hobbies_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width:40%;">
+                        <input type="button" value="Add Hobbies +" onclick="hobbies_fields()" class="active anchor"
+                            style="border-radius: 5px;padding: 2px 2px;width:50%;cursor: pointer;border: none;height: 35px;"></input>
+                    </div>
+                </div>
+                <input type="submit" value="Save and Next &#x2192;">
+            </div>
+        </form>
+        <script>
+            var room = 1;
+            function skill_fields() {
+                room++;
+                var objTo = document.getElementById('skill_fields')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "removeskill" + room);
+                var rdiv = 'removeskill' + room;
+                divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input required  type="text" name="skills" placeholder="Add Skills"><input type="button" value="-"  onclick="remove_skill_fields(' + room + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;"></div>';
+
+                objTo.appendChild(divtest)
+               return room;
+            }
+            function remove_skill_fields(rid) {
+                $('.removeskill' + rid).remove();
+            }
+
+            var hobby = 1;
+            function hobbies_fields() {
+                hobby++;
+                var objTo = document.getElementById('hobbies_fields')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "removeclass" + hobby);
+                var rdiv = 'removeclass' + hobby;
+                divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input required type="text" name="hobbies" placeholder="Add Hobbies"><input type="button" value="-"  onclick="remove_hobbies_fields(' + hobby + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;"></div>';
+
+                objTo.appendChild(divtest)
+            }
+            function remove_hobbies_fields(hid) {
+                $('.removeclass' + hid).remove();
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>

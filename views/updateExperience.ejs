@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div class="root">
+        <div class="subroot1 links">
+            <h2 style="color: #4bcef3;letter-spacing: 1;">Resume Details</h2>
+            <form action="/landing/personal" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Personal Details">
+                </form>
+                <form action="/landing/education" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Education">
+                </form>
+                <form action="/landing/experience" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="background-color:#2291af ;padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Experience">
+                </form>
+                <form action="/landing/skillshobbies" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Skills & Hobbies">
+                </form>
+                <form action="/landing/awards" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Awards & Achievements">
+                </form>
+                <form action="/landing/languages" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Languages Known">
+                </form>
+                <form action="/landing/projects" method="post" style="margin-bottom:8px;">
+                   <input type="hidden" name="user" value="<%=id%>">
+                   <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Projects">
+                </form>
+                <form action="/landing/exit" method="post" >
+                    <input type="hidden" name="user" value="<%=id%>">
+                    <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Exit">
+                 </form>
+        </div>
+        <div class="subroot2" style="margin-top: 2px;margin-bottom: 0px;">
+            <div style="display: flex;flex-direction: row;width: 100%;height: 70px;">
+                <h2
+                    style="color: #4bcef3;margin-top: 20px;margin-left:-150px;letter-spacing: 1;float: left;width: 50%;">
+                    Experience</h2>
+                <form action="/landing/skipExperience" method="post" style="float: right;width: 50%;margin-left: 150px;">
+                    <input type="hidden" name="user" value="<%=id%>">
+                    <input type="submit" value="Skip &#x2192;" width="20%" style="margin: 20px;">
+                </form>
+            </div>
+        <form action="/landing/updateExperience" method="post" style="width: 100%;display: flex;justify-content: center;align-items: center;flex-direction: column;">
+            <input type="hidden" name="user" value="<%=id%>">
+            <%result.forEach((row)=>{%>
+                <div style="width:80%">
+                    <input type="hidden" name="exid" value="<%=row.experienceid%>">
+                    <div style="display: flex;flex-direction: row;width: 100%;">
+                        <div class="labeledfield">
+                            <label>Company Name</label>
+                            <input type="text" name="cname" value="<%=row.company%>">
+                        </div>
+                        <div class="labeledfield">
+                            <label>Duration</label>
+                            <input type="text" name="time" value="<%=row.timeperiod%>">
+                        </div>
+                    </div>
+                    <div class="labeledfield">
+                        <label>Description</label>
+                        <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;"
+                            name="desc"><%=row.description%></textarea>
+                    </div>
+                </div>
+                <%})%>
+                <input type="submit" value="Update &#x2192;">
+                </form>
+        </div>
+    </div>
+</body>
+</html>

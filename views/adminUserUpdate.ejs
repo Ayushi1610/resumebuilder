@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="/images/background.jpg">
+    <form action="/admin/adminUserUpdate" id="register-form" method="post" style="margin: 0;padding: 0;">
+        <input type="hidden" value="<%=result.userid%>" name="userid">
+        <input type="hidden" value="<%=aemail%>" name="aemail">
+        <input type="hidden" value="<%=apass%>" name="apass">
+        <div class="common">
+            <div class="card">
+                <img src="/images/register.png" style="width:100px;height:80px;margin-top: 10px;">
+                <h3 style="color:#4bcef3;letter-spacing:1;margin-top: 10px;">Update User/Contributor Profile</h3>
+                <div
+                    style="display: flex;flex-direction: column;width: 100%;padding: 10px;justify-content: center;align-items: center;">
+                    <input type="text" placeholder="Your Name" name="name" required value="<%=result.name%>">
+                    <input type="email" placeholder="Your Email" name="email" required value="<%=result.email%>">
+                    <div class="inputicons">
+                        <i class="fa fa-eye icon" id="eye"></i>
+                        <input type="password" placeholder="Create Your Password"
+                            style="padding-left: 25px;width: 100%;" name="password" id="password" required value="<%=result.password%>">
+                    </div>
+                    <input type="text" placeholder="User Type" name="type" required value="<%=result.type%>">
+                    <input type="date" placeholder="Date" name="date" required value="<%=result.date%>">
+                    <input type="submit" >
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        const passwordInput = document.querySelector("#password")
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function () {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordInput.setAttribute("type", type)
+        })
+        
+
+    </script>
+</body>
+
+</html>

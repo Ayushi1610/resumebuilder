@@ -1,0 +1,21 @@
+ IoT (Internet of Things) technologies are used by Google Maps to collect and analyse real-time traffic statistics. This comprises:
+
+Google Maps employs the Global Positioning System (GPS) to follow the movements of smartphones and other GPS-enabled gadgets in real time. Google can calculate the amount of traffic on roads and highways by examining the movement patterns of these devices.
+
+
+Traffic sensors: Google Maps also gathers information from traffic sensors positioned on highways and roadways. These sensors are able to measure car speed and volume, which is used to gauge traffic conditions.
+
+Google Maps collects real-time traffic information using cameras that are mounted on roads and motorways. These cameras record images and video of the flow of traffic, and the resulting data is examined to assess traffic
+
+User-generated information: When users are driving and have Google Maps open, the app records information about their position and speed. The real-time traffic statistics for other users is updated using this data.
+
+ Overall, Google Maps uses a combination of GPS, traffic sensors, cameras, and user-generated data to provide accurate and real-time traffic information to its users.
+
+
+One of the IoT technologies that Google Maps uses is GPS (Global Positioning System). GPS enables Google to track the movements of smartphones and other GPS-enabled devices in real-time. By analyzing the movement patterns of these devices, Google can determine traffic congestion on roads and highways.
+
+In addition to GPS, Google Maps also uses information from various other sources, such as traffic sensors, cameras, and even anonymous data from users who have enabled their location history. This data is analyzed using machine learning algorithms to predict traffic conditions in real-time.
+
+Google Maps also relies on crowd-sourced data from its users. When users have Google Maps open while driving, the app collects data about their speed and location, and this data is used to update the real-time traffic information for other users.
+
+Overall, Google Maps uses a combination of GPS, IoT sensors, and user-generated data to provide accurate and real-time traffic information to its users.

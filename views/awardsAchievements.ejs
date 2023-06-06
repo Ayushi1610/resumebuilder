@@ -1,0 +1,102 @@
+<html>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+   <div class="root">
+      <div class="subroot1 links">
+         <h2 style="color: #4bcef3;letter-spacing: 1;">Resume Details</h2>
+         <form action="/landing/navpersonal" method="post" style="margin-bottom:8px;">
+            <input type="hidden" name="user" value="<%=id%>">
+            <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Personal Details">
+            </form>
+            <form action="/landing/naveducation" method="post" style="margin-bottom:8px;">
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Education">
+            </form>
+            <form action="/landing/navexperience" method="post" style="margin-bottom:8px;">
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Experience">
+            </form>
+            <form action="/landing/navskillshobbies" method="post" style="margin-bottom:8px;">
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Skills & Hobbies">
+            </form>
+            <form action="/landing/navawards" method="post" style="margin-bottom:8px;">
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="background-color:#2291af ;padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Awards & Achievements">
+            </form>
+            <form action="/landing/navlanguages" method="post" style="margin-bottom:8px;">
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Languages Known">
+            </form>
+            <form action="/landing/navprojects" method="post" style="margin-bottom:8px;">
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Projects">
+            </form>
+            <form action="/landing/exit" method="post" >
+               <input type="hidden" name="user" value="<%=id%>">
+               <input type="submit" class="active anchor" style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Exit">
+            </form>
+      </div>
+      <form action="/resume/insertawarddetails" method="post">
+        <div class="subroot2">
+           <h2 style="color: #4bcef3;">Awards & Achievements</h2>
+           <div class="section2" id="awards_fields">
+              <input type="hidden" name="user" value="<%=id%>">
+              <div style="width: 100%;">
+                 <span style="color: #4bcef3;margin-right: 20px;">Valid</span>
+                 <input type="date" name="validfrom" style="width: 20%;margin-right: 50px;">To
+                 <input type="date" name="validto" style="width: 20%;margin-left: 50px;">
+              </div>
+              <textarea id="limit" name="award_desc" style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Details"></textarea>
+           </div>
+           <input type="button" onclick="awards_fields()" value="&#43; Add More" style="width: 12%;">
+           <input type="submit" value="Save and Next &#x2192;">
+        </div>
+      </form>
+      <script>
+      //    var acount = 1;
+      // $(function () {
+      //    $(".repeatfield").on('click', function (e) {
+      //       e.preventDefault();
+      //       var $self = $(this);
+      //       if (acount < 3) {
+      //          $self.before($self.prev('div').append('<div style="width: 100%;"><span style="color: #4bcef3;margin-right: 20px;">Valid</span><input type="date" name="validfrom" style="width: 20%;margin-right: 50px;">To<input name="validto" type="date" style="width: 20%;margin-left: 50px;"></div><textarea name="award_desc" maxlength="150" style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Details" ></textarea>'));
+      //          // $self.remove();
+      //          acount++
+      //       }
+      //       else {
+      //          alert("Not able to add more than 3 awards")
+      //       }
+      //    });
+      // });
+      var awards = 1;
+      var add=1;
+            function awards_fields() {
+               if(add<3){
+                awards++;
+                var objTo = document.getElementById('awards_fields')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "removeclass" + awards);
+                divtest.setAttribute("style", "width:100%");
+                var rdiv = 'removeclass' + awards;
+                divtest.innerHTML = ' <div style="display:flex;flex-direction:column; width:100%;"><div style="display:flex;width:100%"><div style="display: flex;flex-direction: column; width:100%"><div style="width: 100%;"><span style="color: #4bcef3;margin-right: 20px;">Valid</span><input type="date" name="validfrom" style="width: 20%;margin-right: 50px;">To<input type="date" name="validto" style="width: 20%;margin-left: 50px;"></div><div><textarea id="limit" name="award_desc" style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Details"></textarea></div></div><input type="button" value="-"  onclick="remove_awards_fields(' + awards + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:5%;cursor: pointer;border: none;height: 35px;"></div>';
+
+                objTo.appendChild(divtest)
+                add++;
+            }
+         else{
+            alert("Not allowed to enter more than 3 awards and achievements")
+         }}
+            function remove_awards_fields(hid) {
+                $('.removeclass' + hid).remove();
+                add--;
+            }
+      </script>
+   </div>
+</body>
+</html>

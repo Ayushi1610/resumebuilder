@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
+        <div style="display: flex;flex-direction: row;">
+            <a class="active anchor" style="margin-right: 5px;" href="#">Personal Details</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Education</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Experience</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Skills & Hobbies</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Awards & Achievements</a>
+            <a class="active anchor" style="margin-right: 5px;" href="#">Languages Known</a>
+            <a class="active anchor" style="background-color:#2291af ;margin-right: 5px;" href="#">Projects</a>
+        </div>
+        <div class="subroot2" style="margin-top: 2px;margin-bottom: 0px;">
+            <div style="display: flex;flex-direction: row;width: 100%;height: 70px;justify-content: space-between;">
+                <h2
+                    style="color: #4bcef3;margin-top: 20px;margin-left:-110px;letter-spacing: 1;float: left;width: 50%;">
+                    Projects</h2>
+                    <div >
+                        <form action="/resume/skipProjects" method="post" style="float: right;">
+                            <input type="hidden" name="user" value="<%=id%>">
+                            <input type="submit" value="Skip &#x2192;" style="width: 70%;margin-left: 0;" >
+                        </form>
+                    <form action="/landing/exit" method="post"  style="float:right;">
+                        <input type="hidden" name="user" value="<%=id%>">
+                        <input type="submit" class="active anchor" value="Exit" style="width: 70%;margin-right: 0;">
+                     </form>
+                   
+                </div>
+            </div>
+            <form action="/resume/deleteProjects" method="post" style="display:flex;justify-content: center;align-items: center;flex-direction: column;width: 100%;">
+                <input type="hidden" name="user" value="<%=id%>">
+            <%result.forEach((row)=>{%>
+                <div class="section2">
+                   <input type="hidden" name="prid" value="<%=row.projectid%>">
+                   <div style="display: flex;flex-direction: row;width:100%;">
+                      <div class="labeledfield">
+                         <label>Project Name</label>
+                         <input type="text" name="projectname" value="<%=row.projectname%>">
+                      </div>
+                      <div class="labeledfield">
+                         <label>Your Role</label>
+                         <select required name="type">
+                            <option>
+                               <%=row.role%>
+                            </option>
+                            <option value="developer">Developer</option>
+                            <option value="tester">Tester</option>
+                            <option value="analyst">Analyst</option>
+                         </select>
+                      </div>
+                      <div class="labeledfield">
+                         <label>Project Link</label>
+                         <input type="text" name="projectlink" value="<%=row.projectlink%>">
+                      </div>
+ 
+                   </div>
+                   <div class="labeledfield">
+                      <label>Description</label>
+                      <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" name="projectdesc"
+                         maxlength="200"><%=row.projectdesc%></textarea>
+                   </div>
+                </div>
+                <%})%>
+                   <input type="submit" value="Delete" style="width: 20%;">
+                </form>
+        </div>
+    </div>
+</body>
+</html>

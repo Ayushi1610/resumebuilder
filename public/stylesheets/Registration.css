@@ -1,0 +1,55 @@
+.common{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    border-radius: 6px;
+   background-color:white;
+    width: 35%;
+    height:auto
+}
+input[type=text],[type=tel],[type=email],[type=password],[type=button],[type=date]{
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px;
+    width: 75%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #4bcef3;
+  }
+select{
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px;
+    margin-bottom: 40px;
+    width: 75%;
+    border: none;
+    border-bottom: 2px solid #4bcef3;
+}
+.inputicons{
+    display: flex;
+    justify-content: left;
+    width: 79%;
+}
+.inputicons i {
+    position: absolute;
+}
+.icon {
+    padding: 20px 0 0 15px;
+}
+input[type=submit] {
+    background-color:#4bcef3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 75%;
+    margin: 10px;
+    margin-bottom: 40px;
+  }

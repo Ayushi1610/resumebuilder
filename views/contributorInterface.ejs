@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorInterface.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <% if(message){%>
+        <script>
+            Swal.fire(
+                '<%=message%>',
+                'You clicked the button!',
+                'success'
+            )
+        </script>
+
+
+        <%}%>
+    <div style="display:flex;flex-direction:column;">
+        <header class="header">
+            <a href="#default" class="logo">
+                <img src="/images/cv.png" />
+                <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+            </a>
+            <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+                <div>
+                    <a href="/landing/Home" style="background-color: #dfe4ea;">LOGOUT</a>
+                </div>
+                <div style="margin-right: 10px;">
+                    <%=result.name%>
+                </div>
+                <div><img src="/images/profile.png"></div>
+            </div>
+        </header>
+        <div style="display: flex;flex-direction: row;">
+            <aside>
+                <p> MENU </p>
+                <form action="/landing/contributorInterface" method="post"  class="special">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="WHAT WE DO"  style="color: #2291af;">
+                </form>
+                <form action="/landing/plan" method="post">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PLANS">
+                </form>
+                <form action="/landing/contribute" method="post">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="CONTRIBUTE">
+                </form>
+                <form action="/landing/report" method="post">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="REPORT" >
+                </form>
+                <form action="/landing/contributorProfile" method="post">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PROFILE" >
+                </form>
+            </aside>
+            <div style="width: 85%;padding: 30px;">
+               <h1>WHAT WE DO</h1>
+               <p>
+                At our Resume Builder, we understand the importance of a well-crafted resume in today's highly competitive job market. Your resume serves as a marketing tool, representing your skills, experience, and achievements to potential employers. That's why we have developed a user-friendly interface and customizable templates to help you create a polished and impactful resume.
+               </p>
+               <p style="font-weight: bold;font-size: 17px;color: #2291af;">
+                Here's what we offer:
+               </p>
+               <p>
+                <span style="font-weight:bold;">1. User-Friendly Interface:</span> 
+                Our website features an intuitive interface that guides you through each step of the resume-building process. Whether you're a seasoned professional or a first-time job seeker, you'll find our platform easy to navigate and use.
+               </p>
+               <p>
+                <span style="font-weight:bold;">2. Resume Sections and Formatting: </span> 
+                We provide a comprehensive list of resume sections, including contact information, summary or objective statement, work experience, education, skills, and more. Our platform allows you to easily rearrange and format these sections to create a well-organized and visually appealing resume.
+               </p>
+               <p>
+                <span style="font-weight:bold;">3. Consistency: </span> 
+                Ready-to-use templates provide a consistent layout and formatting throughout your resume. They maintain a standard structure for sections such as contact information, work experience, education, and skills. This ensures that your resume looks organized and easy to read, making it easier for recruiters to quickly find the information they need.
+               </p>
+               <p>
+                <span style="font-weight:bold;">4. Download Option: </span> 
+                Once you have created your resume, you can easily download it in PDF format, making it accessible for both online applications and print.
+               </p>
+               <p style="font-weight: bold;font-size: 17px;color: #2291af;">
+                Here's what we offer to our contributors:
+               </p>
+               <p>
+                Our contributors can submit their designs, and the best designs are selected and served to our users. This model can help attract talented designers and encourage them to showcase their creativity.
+                We offer commission to contributors for each template design they create and submit to our resume builder platform. The commission can be a percentage of the revenue generated from the template's usage or a fixed amount per template.
+               </p>
+               <p>
+                The value of our contributors' templates is best expressed by our satisfied users. Many individuals have used these templates to stand out in their job applications, secure interviews, and ultimately advance in their careers. Their positive experiences reflect the commitment of our contributors to providing top-notch designs that resonate with employers.
+               </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

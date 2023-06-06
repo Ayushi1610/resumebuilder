@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div class="root">
+        
+        <div style="margin-top: 2px;margin-bottom: 0px;">
+            
+            <form action="/admin/adminHobbyUpdate" method="post" style="display:flex;justify-content: center;align-items: center;flex-direction: column;width: 100%;">
+                <h2
+                    style="color: #4bcef3;margin-top: 20px;letter-spacing: 1;">
+                    Hobbies</h2>
+                    <input type="hidden" value="<%=userid%>" name="userid">
+                    <input type="hidden" value="<%=aemail%>" name="aemail">
+                    <input type="hidden" value="<%=apass%>" name="apass">
+                    <input type="hidden" name="hid" value="<%=hobbyid%>">
+                 <div class="section2">
+                   
+                    <div id="hobbies_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
+                       
+                          <div style="display: flex;flex-direction:column;width:20%;margin-right: 10px;">
+                             
+                             <input type="text" name="hobbies" value="<%=result.hobbies%>">
+                          </div>
+                         
+                    </div>
+                    
+                </div>
+                <input type="submit" value="Update">
+    </form>
+        </div>
+    </div>
+</body>
+</html>

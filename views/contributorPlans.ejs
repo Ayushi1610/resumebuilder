@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorInterface.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorPlans.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <% if(message){%>
+        <script>
+            Swal.fire(
+                '<%=message%>',
+                'You clicked the button!',
+                'warning'
+            )
+        </script>
+
+
+        <%}%>
+        <% if(message1){%>
+            <script>
+                Swal.fire(
+                    '<%=message1%>',
+                    'You clicked the button!',
+                    'warning'
+                )
+            </script>
+    
+    
+            <%}%>
+            <div style="display:flex;flex-direction:column;">
+                <header class="header">
+                    <a href="#default" class="logo">
+                        <img src="/images/cv.png" />
+                        <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+                    </a>
+                    <div
+                        style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+                        <div style="margin-right: 10px;">
+                            <%=result.name%>
+                        </div>
+                        <div><img src="/images/profile.png"></div>
+                    </div>
+                </header>
+                <div style="display: flex;flex-direction: row;">
+                    <aside>
+                        <p> MENU </p>
+                        <form action="/landing/contributorInterface" method="post">
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <input type="hidden" value="<%=result.userid%>" name="user">
+                            <input type="submit" value="WHAT WE DO">
+                        </form>
+                        <form action="/landing/plan" method="post" class="special">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <input type="hidden" value="<%=result.userid%>" name="user">
+                            <input type="submit" value="PLANS" style="color: #2291af;">
+                        </form>
+                        <form action="/landing/contribute" method="post">
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+                            <input type="hidden" value="<%=result.userid%>" name="user">
+                            <input type="submit" value="CONTRIBUTE">
+                        </form>
+                        <form action="/landing/report" method="post">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            <input type="hidden" value="<%=result.userid%>" name="user">
+                            <input type="submit" value="REPORT">
+                        </form>
+                        <form action="/landing/contributorProfile" method="post">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            <input type="hidden" value="<%=result.userid%>" name="user">
+                            <input type="submit" value="PROFILE">
+                        </form>
+                    </aside>
+                    </aside>
+                    <div
+                        style="width: 85%;padding: 30px;display: flex;justify-content: center;align-items: center;flex-direction:row;gap:30px">
+                        <form action="/landing/choosePlan" method="post" style="margin: 0;padding: 0px;background:none;display: flex;justify-content: center;align-content: center;flex-direction: row;gap: 30px;">
+                            <input type="hidden" value="<%=result.userid%>" name="user">
+                            <div class="card1">
+                                <div class="heading">NO COST PLAN</div>
+                                <div style="font-size: 20px;padding: 25px;">
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Normal Design.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Basic Customization Options.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload in image or pdf format.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> If your approved template will be used by atleast 3 users then you will get benefited.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Copyright will be mentioned on the
+                                        template.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Performance based goddies
+                                        available.</p>
+                                </div>
+                                <div style="margin-top: 70px;">
+                                    <input type="submit" class="submit" name="nocost" value="Choose Plan"
+                                        style="color: white;background: -webkit-linear-gradient(#2291af, #4bcef3);border-radius: 5px;padding: 10px;">
+                                </div>
+                            </div>
+                            <div class="card2">
+                                <div class="heading">CALL TO ACTION</div>
+                                <div class="heading">PLAN</div>
+                                <div style="font-size: 20px;padding: 25px;">
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> High Quality Design</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Design in our requested format
+                                        only.
+                                    </p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Design template in HTML, CSS and
+                                        JavaScript.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload code in text file.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Cost based on the number of times
+                                        their
+                                        template designs are downloaded or used by users.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Additional goddies.</p>
+                                    <p>&#x27A2; &#x20b9; 29 per template.</p>
+                                </div>
+                                <div style="margin-top:10px;"><input type="submit" name="calltoaction" class="submit"
+                                        value="Choose Plan"
+                                        style="color: white;background: -webkit-linear-gradient(#2291af, #4bcef3);border-radius: 5px;padding: 10px;margin-top: 55px;">
+                                </div>
+                            </div>
+                            <div class="card1">
+                                <div class="heading">ROYALTY PLAN</div>
+                                <div style="font-size: 20px;padding: 25px;">
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> High Quality Design</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Design template in HTML, CSS and
+                                        JavaScript.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload code in text file.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Cost based on the number of times
+                                        their
+                                        template designs are downloaded or used by users.</p>
+                                    <p>&#x27A2; &#x20b9; 19 per template.</p>
+                                </div>
+                                <div style="margin-top:60px;"><input type="submit" class="submit" name="royalty"
+                                        value="Choose Plan"
+                                        style="color: white;background: -webkit-linear-gradient(#2291af, #4bcef3);border-radius: 5px;padding: 10px;margin-top: 55px;">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</body>
+
+</html>

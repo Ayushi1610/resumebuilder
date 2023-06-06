@@ -1,0 +1,268 @@
+<html>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="/stylesheets/ResumeDetails.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg" style="margin: 20px;">
+   <header class="header">
+      <a href="#default" class="logo">
+         <img src="/images/cv.png">
+         <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+      </a>
+      <div class="middle">
+         <a href="#section1">PERSONAL DETAILS</a>
+         <a href="#section2">EDUCATION</a>
+         <a href="#section3">EXPERIENCE</a>
+         <a href="#section4">SKILLS AND HOBBIES</a>
+         <a href="#section5">AWARDS AND ACHIEVEMENTS</a>
+         <a href="#section6">LANGUAGES KNOWN</a>
+         <a href="#section7">PROJECTS</a>
+      </div>
+      <div class="header-right">
+         <div style="margin:8px 9px 8px 9px;">
+            <%=result.name%>
+         </div>
+         <div><img src="/images/profile.png"></div>
+      </div>
+   </header>
+   <div class="root">
+      <form action="/landing/updateresumedetails" method="post"
+         style="width: 100%;display: flex;justify-content: center;align-items: center;flex-direction: column;">
+         <div class="subroot2" id="section1">
+            <h2 style="color: #2291af;margin: 50px;letter-spacing: 1;">Personal Details</h2>
+            <div class="section1">
+               <input type="hidden" name="user" value="<%=result.userid%>">
+               <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
+                  <div class="labeledfield">
+                     <label>First Name</label>
+                     <input type="text" name="fname" value="<%=result.fname%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Last Name</label>
+                     <input type="text" name="lname" value="<%=result.lname%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Email</label>
+                     <input type="email" name="email" value="<%=result.pemail%>">
+                  </div>
+               </div>
+               <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
+                  <div class="labeledfield">
+                     <label>Mobile Number</label>
+                     <input type="tel" name="phone" value="<%=result.mobile%>"  pattern="[0-9]{10}">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Designation</label>
+                     <input type="text" name="designation" value="<%=result.designation%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>LinkedIn Account</label>
+                     <input type="text" name="linkedin" value="<%=result.linkedin%>">
+                  </div>
+               </div>
+               <div style="display: flex;flex-direction: column;width: 98%;margin-bottom: 10px;">
+                  <div class="labeledfield">
+                     <label>Address</label>
+                     <input type="text" name="address" value="<%=result.address%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Career Objective</label>
+                     <input type="text" name="objective" value="<%=result.objective%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Picture</label>
+                     <input type="file" name="photo" value="<%=result.photo%>">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="subroot2" id="section2">
+            <h2 style="color: #2291af;margin: 30px;letter-spacing: 1;">Education</h2>
+            <div class="section2">
+               <input type="hidden" name="euser" value="<%=result.userid%>">
+               <h4 style="color: #2291af;letter-spacing: 1;">SSC Details</h4>
+               <div style="display: flex;flex-direction: row;width:100%;">
+                  <div class="labeledfield">
+                     <label>Passing Year</label>
+                     <input type="text" name="sscyear" value="<%=result.ssc_passyear%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Percentage</label>
+                     <input type="text" name="sscper" value="<%=result.ssc_per%>">
+                  </div>
+               </div>
+               <h4 style="color: #2291af;letter-spacing: 1;">HSC Details</h4>
+               <div style="display: flex;flex-direction: row;width: 100%;">
+                  <div class="labeledfield">
+                     <label>Passing Year</label>
+                     <input type="text" name="hscyear" value="<%=result.hsc_passyear%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Percentage</label>
+                     <input type="text" name="hscper" value="<%=result.hsc_per%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Specialization</label>
+                     <input type="text" name="hscspec" value="<%=result.hsc_spec%>">
+                  </div>
+               </div>
+               <h4 style="color: #2291af;letter-spacing: 1;">Undergraduation Details</h4>
+               <div style="display: flex;flex-direction: row;width: 100%;">
+                  <div class="labeledfield">
+                     <label>Passing Year</label>
+                     <input type="text" name="ugyear" value="<%=result.ug_passyear%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>CGPA</label>
+                     <input type="text" name="ugper" value="<%=result.ug_cgpa%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Specialization</label>
+                     <input type="text" name="ugspec" value="<%=result.ug_spec%>">
+                  </div>
+               </div>
+               <h4 style="color: #2291af;letter-spacing: 1;">Postgraduation Details</h4>
+               <div style="display: flex;flex-direction: row;width: 100%;">
+                  <div class="labeledfield">
+                     <label>Passing Year</label>
+                     <input type="text" name="pgyear" value="<%=result.pg_passyear%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>CGPA</label>
+                     <input type="text" name="pgper" value="<%=result.pg_cgpa%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Specialization</label>
+                     <input type="text" name="pgspec" value="<%=result.pg_spec%>">
+                  </div>
+               </div>
+
+            </div>
+         </div>
+
+         <div class="subroot2" id="section3">
+            <h2 style="color: #2291af;">Experience</h2>
+            <%result1.forEach((row)=>{%>
+               <div class="section2 repeatable">
+                  <input type="hidden" name="exid" value="<%=row.experienceid%>">
+                  <div style="display: flex;flex-direction: row;width: 100%;">
+                     <div class="labeledfield">
+                        <label>Company Name</label>
+                        <input type="text" name="cname" value="<%=row.company%>">
+                     </div>
+                     <div class="labeledfield">
+                        <label>Duration</label>
+                        <input type="text" name="time" value="<%=row.timeperiod%>">
+                     </div>
+                  </div>
+                  <div class="labeledfield">
+                     <label>Description</label>
+                     <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;"
+                        name="desc"><%=row.description%></textarea>
+                  </div>
+               </div>
+               <%})%>
+         </div>
+         <div class="subroot2" id="section4">
+            <h2 style="color: #2291af;">Skills & Hobbies</h2>
+            <div class="section2">
+               <h4 style="color: #2291af;letter-spacing: 1;">Skills</h4>
+               <div style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
+                  <%result2.forEach((row)=>{%>
+                     <div style="display: flex;flex-direction:column;width:20%;margin-right: 10px;">
+                        <input type="hidden" name="sid" value="<%=row.skillid%>">
+                        <input type="text" name="skills" value="<%=row.skill%>">
+                     </div>
+                     <%})%>
+               </div>
+            </div>
+            <div class="section2">
+               <h4 style="color: #2291af;letter-spacing: 1;">Hobbies</h4>
+               <div id="hobbies_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
+                  <%result3.forEach((row)=>{%>
+                     <div style="display: flex;flex-direction:column;width:20%;margin-right: 10px;">
+                        <input type="hidden" name="hid" value="<%=row.hobbyid%>">
+                        <input type="text" name="hobbies" value="<%=row.hobbies%>">
+                     </div>
+                     <%})%>
+               </div>
+            </div>
+         </div>
+         <div class="subroot2" id="section5">
+            <h2 style="color: #2291af;">Awards & Achievements</h2>
+            <%result4.forEach((row)=>{%>
+               <div class="section2">
+                  <input type="hidden" name="aid" value="<%=row.awardsid%>">
+                  <div style="width: 100%;">
+                     <span style="color: #2291af;margin-right: 20px;">Valid</span>
+                     <input type="date" name="validfrom" style="width: 20%;margin-right: 50px;"
+                        value="<%=row.validfrom%>">To
+                     <input type="date" name="validto" style="width: 20%;margin-left: 50px;" value="<%=row.validto%>">
+                  </div>
+                  <div class="labeledfield">
+                     <label>Description</label>
+                     <textarea id="limit" name="award_desc"
+                        style="height:50px;border-radius: 5px;width: 97%;margin: 10px;"
+                        name="Content"><%=row.award_desc%></textarea>
+                  </div>
+               </div>
+               <%})%>
+         </div>
+         <div class="subroot2" id="section6">
+            <h2 style="color: #2291af;margin-bottom: 50px;">Languages Known</h2>
+            <div class="section2">
+               <div id="language_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
+                  <%result5.forEach((row)=>{%>
+                     <div style="display: flex;flex-direction: row;width:20%;margin-right: 10px;">
+                        <input type="hidden" name="lid" value="<%=row.languagesid%>">
+                        <input type="text" name="languages" value="<%=row.languages%>">
+                     </div>
+                     <%})%>
+               </div>
+            </div>
+         </div>
+         <div class="subroot2" id="section7">
+            <h2 style="color: #4bcef3;">Projects</h2>
+            <%result6.forEach((row)=>{%>
+               <div class="section2">
+                  <input type="hidden" name="prid" value="<%=row.projectid%>">
+                  <div style="display: flex;flex-direction: row;width:100%;">
+                     <div class="labeledfield">
+                        <label>Project Name</label>
+                        <input type="text" name="projectname" value="<%=row.projectname%>">
+                     </div>
+                     <div class="labeledfield">
+                        <label>Your Role</label>
+                        <select required name="type">
+                           <option>
+                              <%=row.role%>
+                           </option>
+                           <option value="developer">Developer</option>
+                           <option value="tester">Tester</option>
+                           <option value="analyst">Analyst</option>
+                        </select>
+                     </div>
+                     <div class="labeledfield">
+                        <label>Project Link</label>
+                        <input type="text" name="projectlink" value="<%=row.projectlink%>">
+                     </div>
+
+                  </div>
+                  <div class="labeledfield">
+                     <label>Description</label>
+                     <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" name="projectdesc"
+                        maxlength="200"><%=row.projectdesc%></textarea>
+                  </div>
+               </div>
+               <%})%>
+                  <input type="submit" value="Update and Save" style="width: 20%;">
+         </div>
+      </form>
+   </div>
+   <script type="text/javascript" src="/javascripts/resumeDetails.js"></script>
+</body>
+
+
+</html>

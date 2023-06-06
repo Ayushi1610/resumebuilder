@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorInterface.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: white;">
+    <div style="display:flex;flex-direction:column;">
+        <header class="header">
+            <a href="#default" class="logo">
+                <img src="/images/cv.png" />
+                <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+            </a>
+            <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+                <div>
+                    <a href="/landing/Home" style="background-color: #dfe4ea;">LOGOUT</a>
+                </div>
+                <div style="margin-right: 10px;">
+                    <%=result.name%>
+                </div>
+                <div><img src="/images/profile.png"></div>
+            </div>
+        </header>
+        <div style="display: flex;flex-direction: row;">
+            <aside>
+                <p> MENU </p>
+                <form action="/landing/contributorInterface" method="post">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="WHAT WE DO">
+                </form>
+                <form action="/landing/plan" method="post">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PLANS">
+                </form>
+                <form action="/landing/contribute" method="post">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="CONTRIBUTE">
+                </form>
+                <form action="/landing/report" method="post">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="REPORT">
+                </form>
+                <form action="/landing/contributorProfile" method="post" class="special">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PROFILE" style="color: #2291af;">
+                </form>
+            </aside>
+            <form action="/landing/updateprofile/<%=result.userid%>" method="post" style="width: 85%;display: flex;align-items: center;flex-direction: column;justify-content: center;">
+                <div
+                    style="width: 100%;display: flex;align-items: center;flex-direction: column;justify-content: center;">
+                    <img src="/images/profile.png" style="width: 50px;height: 50px;">
+                    <h1>PROFILE</h1>
+                    <div style="width: 40%;">
+                        <div>
+                            <input type="text" value="<%=result.name%>" name="uname">
+                            <input type="text" value="<%=result.email%>" name="mail">
+                            <div class="inputicons">
+                                <i class="fa fa-eye icon" id="eye"></i>
+                                <input type="password" value="<%=result.password%>" style="padding-left: 25px;"
+                                    name="password" id="password" required>
+                            </div>
+                            <input type="text" name="type" value="<%=result.type%>" disabled>
+                            <input type="hidden" name="type" value="<%=result.type%>" >
+                        </div>
+                    </div>
+                    <input type="submit"
+                        style="color: white;background-color: #2291af;border-radius: 5px;padding: 10px;margin:50px;width: 20%;"
+                        value="Update" onclick="login_again()">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const passwordInput = document.querySelector("#password")
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function () {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordInput.setAttribute("type", type)
+        })
+
+        function login_again(){
+    alert("Credentials changed, Login again")
+}
+    </script>
+</body>
+
+</html>

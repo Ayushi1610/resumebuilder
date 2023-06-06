@@ -1,0 +1,165 @@
+html {
+  scroll-behavior: smooth;
+}
+header {
+    overflow: hidden;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    background-color: white;
+    padding: 5px;
+    z-index: 2;
+  }
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+    margin: 0px 7px 0px 7px;
+  }
+  .header a.logo {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 200px;
+    font-weight: bold;
+  }
+  
+  .header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .header a.active {
+    background-color: #4bcef3;
+    color: white;
+  }
+  .header-right {
+    float: right;
+  }
+  img{
+    height: 30px;
+    width: 30px;
+}
+aside{
+  display: flex;
+  align-items: center;
+  background: -webkit-linear-gradient(#2291af, #4bcef3);
+    flex-direction: column;
+    width: 15%;
+    height: 93vh;
+    margin-top: 39px;
+    padding-top: 20px;
+    gap: 10px;
+    position: fixed;
+    height: 100%;
+}
+.anchor{
+  padding: 20px 25px 20px 25px;
+  background: -webkit-linear-gradient(#2291af, #4bcef3);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  cursor:pointer;
+  width: 80%;
+}
+aside a:hover{
+  background: white;
+  color: #2291af;
+}
+.right{
+  width: 85%;
+  margin-top: 49px;
+  padding: 10px;
+  margin-left: 15%;
+}
+.acard1{
+  border-radius: 5px;
+  width: 25%;
+  background-color: #4bcef333;
+}
+.cardhead{
+  margin: 20px;
+  font-size: 30px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#187b97, #4bcef3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.cardhead2{
+  margin: 20px;
+  font-size: 20px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#187b97, #4bcef3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  --p:20;
+  --b:22px;
+  --c:darkred;
+  --w:150px;
+  
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000000d 0);
+  /* -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b))); */
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p {
+  from{--p:0}
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #067775;
+  border-radius: 50%;
+  display: inline-block;
+}

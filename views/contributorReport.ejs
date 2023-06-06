@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/contributorInterface.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+<style>
+    .hexagon {
+        clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+        width: 350px;
+        height: 370px;
+        background-color: #48dbfb7a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: .3s ease-in-out;
+
+    }
+    .hexagon:hover {
+        transform: scale(1.1);
+        background-color: #48dbfb7a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+</style>
+
+<body background="/images/background.jpg">
+    <div style="display:flex;flex-direction:column;">
+        <header class="header">
+            <a href="#default" class="logo">
+                <img src="/images/cv.png" />
+                <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+            </a>
+            <div style="display: flex;justify-content: center;align-items: center; float: right;cursor: pointer;">
+                <div style="margin-right: 10px;">
+                    <%=result.name%>
+                </div>
+                <div><img src="/images/profile.png"></div>
+            </div>
+        </header>
+        <div style="display: flex;flex-direction: row;">
+            <aside>
+                <p> MENU </p>
+                <form action="/landing/contributorInterface" method="post">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="WHAT WE DO">
+                </form>
+                <form action="/landing/plan" method="post">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PLANS">
+                </form>
+                <form action="/landing/contribute" method="post">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="CONTRIBUTE">
+                </form>
+                <form action="/landing/report" method="post" class="special">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="REPORT" style="color: #2291af;">
+                </form>
+                <form action="/landing/contributorProfile" method="post">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    <input type="hidden" value="<%=result.userid%>" name="user">
+                    <input type="submit" value="PROFILE">
+                </form>
+            </aside>
+            <div style="display: flex;justify-content: center;align-items: center;width: 85%;gap: 30px;">
+                <div class="hexagon">
+                    <h1 style="background: -webkit-linear-gradient(#053d4d, #4bcef3);-webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;margin-bottom: 60px;">No Cost Plan</h1>
+                    <div style="margin-bottom: 10px;font-size: 20px;color: #053d4d;">Submitted Templates - <%=result3.count%>
+                    </div>
+                    <div style="font-size: 20px;color: #053d4d;margin-bottom: 10px;">Approved Templates - <%=result6.count%>
+                    </div>
+                    <div style="font-size: 20px;color: #053d4d;">Cancelled Templates - <%=result9.count%>
+                    </div>
+                </div>
+                <div class="hexagon" style="background-color: #1eabca7d">
+                    <h1 style="background: -webkit-linear-gradient(#053d4d, #4bcef3);-webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;margin-bottom: 60px;">Call to Action Plan</h1>
+                    <div style="margin-bottom: 10px;font-size: 20px;color: #053d4d;">Submitted templates - <%=result1.count%>
+                    </div>
+                    <div style="font-size: 20px;color: #053d4d;margin-bottom: 10px;">Approved Templates - <%=result4.count%>
+                    </div>
+                    <div style="font-size: 20px;color: #053d4d;">Cancelled Templates - <%=result7.count%>
+                    </div>
+                </div>
+                <div class="hexagon">
+                    <h1 style="background: -webkit-linear-gradient(#053d4d, #4bcef3);-webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;margin-bottom: 60px;">Royalty Plan</h1>
+                    <div style="margin-bottom: 10px;font-size: 20px;color: #053d4d;">Submitted templates - <%=result2.count%>
+                    </div>
+                    <div style="font-size: 20px;color: #053d4d;margin-bottom: 10px;">Approved Templates - <%=result5.count%>
+                    </div>
+                    <div style="font-size: 20px;color: #053d4d;">Cancelled Templates - <%=result8.count%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

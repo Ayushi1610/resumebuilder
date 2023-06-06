@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div class="root">
+        <div>
+            <div >
+                <form action="/admin/adminEducationUpdate" style="width: 100%;display: flex;justify-content: center;align-items: center;" method="post">
+                    <div class="section2">
+                        <h2
+                        style="color: #4bcef3;margin-top: 30px;letter-spacing: 1;">
+                        Education Details</h2>
+                        <input type="hidden" value="<%=result.userid%>" name="userid">
+                        <input type="hidden" value="<%=aemail%>" name="aemail">
+                        <input type="hidden" value="<%=apass%>" name="apass">
+                        <h4 style="color: #2291af;letter-spacing: 1;">SSC Details</h4>
+                        <div style="display: flex;flex-direction: row;width:100%;">
+                            <div class="labeledfield">
+                            <label>Passing Year</label>
+                            <input type="text" required name="sscyear" placeholder="Passing Year" value="<%=result.ssc_passyear%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Percentage</label>
+                            <input type="text" required name="sscper" placeholder="Percentage" value="<%=result.ssc_per%>">
+                            </div>
+                        </div>
+                        <h4 style="color: #2291af;letter-spacing: 1;">HSC Details</h4>
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div class="labeledfield">
+                            <label>Passing Year</label>
+                            <input type="text" required name="hscyear" placeholder="Passing Year" value="<%=result.hsc_passyear%>">
+                            </div>
+                            <div class="labeledfield">
+                            <label>Percentage</label>
+                            <input type="text" required name="hscper" placeholder="Percentage" value="<%=result.hsc_per%>">
+                            </div>
+                            <div class="labeledfield">
+                            <label>Specialization</label>
+                            <input type="text" required name="hscspec" placeholder="Specialization" value="<%=result.hsc_spec%>">
+                            </div>
+                        </div>
+                        <h4 style="color: #2291af;letter-spacing: 1;">Undergraduation Details</h4>
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div class="labeledfield">
+                            <label>Passing Year</label>
+                            <input type="text" required name="ugyear" placeholder="Passing Year" value="<%=result.ug_passyear%>">
+                            </div>
+                            <div class="labeledfield">
+                            <label>CGPA</label>
+                            <input type="text" required name="ugper" placeholder="CGPA" value="<%=result.ug_cgpa%>">
+                            </div>
+                            <div class="labeledfield">
+                            <label>Specialization</label>
+                            <input type="text" required name="ugspec" placeholder="Specialization" value="<%=result.ug_spec%>">
+                            </div>
+                        </div>
+                        <h4 style="color: #2291af;letter-spacing: 1;">Postgraduation Details</h4>
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div class="labeledfield">
+                                <label>Passing Year</label>
+                            <input type="text" name="pgyear" placeholder="Passing Year" value="<%=result.pg_passyear%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>CGPA</label>
+                            <input type="text" name="pgper" placeholder="CGPA" value="<%=result.pg_cgpa%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Specialization</label>
+                            <input type="text" name="pgspec" placeholder="Specialization" value="<%=result.pg_spec%>">
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Update">
+                    </div>
+                </form>
+        </div>
+</body>
+
+</html>

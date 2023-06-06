@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/details.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body background="/images/background.jpg">
+    <div class="root">
+        <div class="subroot1 links">
+            <h2 style="color: #4bcef3;letter-spacing: 1;">Resume Details</h2>
+            <form action="/landing/personal" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="background-color:#2291af ;padding: 20px;border-radius: 0px;width: 100%;margin: 0px;"
+                    value="Personal Details">
+            </form>
+            <form action="/landing/education" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Education">
+            </form>
+            <form action="/landing/experience" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Experience">
+            </form>
+            <form action="/landing/skillshobbies" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Skills & Hobbies">
+            </form>
+            <form action="/landing/awards" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Awards & Achievements">
+            </form>
+            <form action="/landing/languages" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Languages Known">
+            </form>
+            <form action="/landing/projects" method="post" style="margin-bottom:8px;">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Projects">
+            </form>
+            <form action="/landing/exit" method="post">
+                <input type="hidden" name="user" value="<%=id%>">
+                <input type="submit" class="active anchor"
+                    style="padding: 20px;border-radius: 0px;width: 100%;margin: 0px;" value="Exit">
+            </form>
+        </div>
+        <div>
+            <div class="subroot2" style="height: auto;">
+                <div style="display: flex;flex-direction: row;width: 100%;">
+                    <h2
+                        style="color: #4bcef3;margin-top: 40px;margin-left:-150px;letter-spacing: 1;float: left;width: 50%;">
+                        Personal Details</h2>
+                    <form action="/landing/skipPersonalDetails" method="post"
+                        style="float: right;width: 50%;margin-left: 150px;">
+                        <input type="hidden" name="user" value="<%=id%>">
+                        <input type="submit" value="Skip &#x2192;" width="20%">
+                    </form>
+                </div>
+                <form action="/landing/updatePersonalDetails" method="post"
+                    style="width: 100%;display: flex;justify-content: center;align-items: center;">
+                    <div class="section1">
+                        <input type="hidden" name="user" value="<%=id%>">
+                        <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
+                            <div class="labeledfield">
+                                <label>First Name</label>
+                            <input type="text" name="fname" required placeholder="First Name" value="<%=result.fname%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Last Name</label>
+                            <input type="text" name="lname" required placeholder="Last Name" value="<%=result.lname%>">
+                            </div>
+                        </div>
+                        <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
+                            <div class="labeledfield">
+                                <label>Email</label>
+                            <input type="email" name="email" required placeholder="Email" value="<%=result.pemail%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Mobile Number</label>
+                            <input type="tel" name="phone" required placeholder="Mobile Number" pattern="[0-9]{10}"
+                                value="<%=result.mobile%>">
+                            </div>
+                        </div>
+                        <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
+                            <div class="labeledfield">
+                                <label>Designation</label>
+                            <input type="text" name="designation" required placeholder="Designation"
+                                value="<%=result.designation%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>LinkedIn</label>
+                            <input type="text" name="linkedin" placeholder="LinkedIn Account"
+                                value="<%=result.linkedin%>">
+                            </div>
+                        </div>
+                        <div style="display: flex;flex-direction: column;width: 100%;margin-bottom: 10px;">
+                            <div class="labeledfield">
+                                <label>Address</label>
+                            <input type="text" name="address" required placeholder="Address"
+                                value="<%=result.address%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Career Objective</label>
+                            <input type="text" name="objective" required placeholder="Career Objective"
+                                value="<%=result.objective%>">
+                            </div>
+                            <div class="labeledfield">
+                                <label>Picture</label>
+                            <input type="file" name="photo" placeholder="Uplaod Picture" value="<%=result.photo%>">
+                            </div>
+                        </div>
+                        <input type="submit" value="Update &#x2192;">
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>

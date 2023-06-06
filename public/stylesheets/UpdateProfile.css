@@ -1,0 +1,73 @@
+.container{
+    background-color: rgba(0,0,0,0.4);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.root{
+    width:30%;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+}
+input[type=text],[type=tel],[type=email],[type=password]{
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #4bcef3;
+    padding: 10px;
+  }
+  label{
+    color: #054658;
+    font-weight: bold;
+    margin: 2px;
+    margin-right: 10px;
+  }
+  hr{
+    color: gray;
+    width: 100%;
+  }
+  .section{
+    display: flex;
+    flex-direction:column;
+    width: 70%;
+    margin-bottom: 20px;
+  }
+.close{
+    background-color: #4bcef3;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+.inputicons{
+    
+    justify-content: left;
+}
+.inputicons i {
+cursor: pointer;
+margin-right: -20px;
+z-index: 2;
+}
+.submit{
+    cursor: pointer;
+    background-color:#4bcef3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    margin: 10px;
+    margin-bottom: 50px;
+  }
