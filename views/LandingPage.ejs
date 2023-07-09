@@ -1,101 +1,247 @@
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/LandingPage.css">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/LoginCard.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    </head>
-    
-    <body  class="divContainer img">
-        <% if(message){%>
-            <script>
-                 Swal.fire(
-            '<%=message%>',
-            'You clicked the button!',
-            'warning'
-        )
-            </script>
-            
-            <%}%>
-            <% if(message1){%>
-                <script>
-                     Swal.fire(
-                '<%=message1%>',
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/LandingPage.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/LoginCard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="divContainer img" style="margin: 0;">
+    <% if(message){%>
+        <script>
+            Swal.fire(
+                '<%=message%>',
                 'You clicked the button!',
                 'warning'
             )
-                </script>
-                
-                <%}%>
-            <header class="header">
-                <a href="#default" class="logo">
-                    <img src="/images/cv.png">
-                    <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
-                </a>
-                <div class="middle">
-                    <a href="#section1">OVERVIEW</a>
-                    <a href="#section2">HOW RESUME BUILDER WORKS</a>
-                    <a href="#section3">FEATURES</a>
-                    <a href="#section4">PLANS</a>
-                    <a href="#section4">CONTACT US</a>
-                  </div>
-                <div class="header-right">
-                  <a id="signin-btn" style="cursor: pointer;">SIGN IN</a>
-                  <a class="active" href="/landing/register" >GET STARTED</a>
-                </div>
-            </header>
-            <div class="main row" id="section1">
-                <div style="display: flex;align-items: center;flex-direction: column;">
-                    <h1 style="margin-bottom: 30px;">RESUME BUILDER</h1>
-                    <div>
-                        <p style="max-width: 900px;letter-spacing: 0.5;">Welcome to our resume builder website! We understand that crafting a professional and compelling resume can be a challenging task, which is why we're here to help. Our user-friendly platform provides a variety of customizable templates and tools to make the resume building process easier for you.</p>
-                        <p style="max-width: 900px;letter-spacing: 0.5;">Fill in online, and download in seconds. Build a professional Design C.V, add ready-to-use suggestions, and get the job. Choose a CV template, fill it out, and download in seconds. Create a professional curriculum vitae in a few clicks. Just pick one of the designed CV templates below, add ready-to-use suggestions, and get the job.</p>
-                    </div>
-                    <img src="/images/gif1.gif" style="width: 300px;height: 250px;margin-top: 40px;">
-                    <div style="margin-top: 50px;">
-                        <a class="active" href="/landing/register" style="border-radius: 5px;padding: 10px 25px 10px 25px;background-color: #4bcef3;color: white;text-decoration: none;">BUILD MY RESUME &#8594;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="main1" id="section2">
-                <h1>HOW RESUME BUILDER WORKS</h1>
-                <h4 style="color:#535c68;letter-spacing: 1;">Just three simple steps</h4>
-                <div style="display: flex;flex-direction: row;margin-top: 50px;">
-                    
-                    <div class="card">
-                       <img src="/images/card1.gif" style="width: 100px;height: 80px;">
-                       <h4>Select a Template</h4>
-                    </div>
-                    <div class="card">
-                        <img src="/images/card2.gif" style="width: 100px;height: 80px;">
-                        <h4>Answer a few questions</h4>
-                    </div>
-                    <div class="card">
-                        <img src="/images/card3.gif" style="width: 100px;height: 80px;">
-                        <h4>Click Finalize and You're done</h4>
-                    </div>
-                </div>        
-            </div>
-        <form action="/landing/insertqueryinfo" id="submit-form" method="post">
-            <div class="main1" id="section4" style="margin-bottom: 150px;">
-                <h1>CONTACT US</h1>
-                <div style="display: flex;flex-direction: column;float: left;width: 800px;;">
-                        <div>
-                            <input type="text" placeholder="First Name" name="fname">
-                            <input type="text" placeholder="Last Name" name="lname">
-                        </div>
-                        <div>
-                            <input type="tel" placeholder="Mobile Number" name="number" pattern="[0-9]{10}" required>
-                            <input type="email" placeholder="Email" name="mail" required>
-                        </div>
-                    <textarea style="height: 200px;border-radius: 5px;width: 93%;margin: 10px;" placeholder="Write your query here" name="Content"></textarea>
-                    <input type='submit'>
-                </div>
-            </div>
-        </form>
-        <%- include('LoginCard')%>
-        <%- include('adminLogin')%>
-        <script type="text/javascript" src="/javascripts/landing.js">
         </script>
-        </body>
+
+        <%}%>
+            <% if(message1){%>
+                <script>
+                    Swal.fire(
+                        '<%=message1%>',
+                        'You clicked the button!',
+                        'warning'
+                    )
+                </script>
+
+                <%}%>
+                    <header class="header">
+                        <a href="#default" class="logo">
+                            <img src="/images/cv.png">
+                            <div style="margin: 0px 7px 0px 7px;">Resume Builder</div>
+                        </a>
+                        <div class="middle">
+                            <a href="#section1">HOME</a>
+                            <a href="#section2">SERVICES</a>
+                            <a href="#section3">FEATURES</a>
+                            <a href="#section4">PLANS</a>
+                            <a href="#section5">CONTACT US</a>
+                        </div>
+                        <div class="header-right">
+                            <a id="signin-btn" style="cursor: pointer;">SIGN IN</a>
+                            <a class="active" href="/landing/register">GET STARTED</a>
+                        </div>
+                    </header>
+                    <div class="main" id="section1">
+                        <div style="display: flex;align-items: center;flex-direction: row;margin-top: 60px;">
+
+                            <div class="col">
+                                <h1 style="margin-bottom: 50px;">RESUME BUILDER</h1>
+                                <p style="max-width: 900px;letter-spacing: 0.5;text-align: justify;">Welcome to our
+                                    resume builder website! We understand that crafting a professional and compelling
+                                    resume can be a challenging task, which is why we're here to help. Our user-friendly
+                                    platform provides a variety of customizable templates and tools to make the resume
+                                    building process easier for you.</p>
+                                <p style="max-width: 900px;letter-spacing: 0.5;text-align: justify;">Fill in online, and
+                                    download in seconds. Build a professional Design C.V, add ready-to-use suggestions,
+                                    and get the job. Choose a CV template, fill it out, and download in seconds. Create
+                                    a professional curriculum vitae in a few clicks. Just pick one of the designed CV
+                                    templates below, add ready-to-use suggestions, and get the job.</p>
+                                <div style="margin-top: 50px;">
+                                    <a class="active" href="/landing/register"
+                                        style="border-radius: 5px;padding: 10px 25px 10px 25px;background-color: #4bcef3;color: white;text-decoration: none;">BUILD
+                                        MY RESUME &#8594;</a>
+                                </div>
+                            </div>
+                            <div class="col" style="display: flex;justify-content: center;">
+                                <img src="/images/gif1.gif" style="width: 500px;height: 350px;margin-top: 40px;">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main1" id="section2">
+                        <h1>SERVICES</h1>
+                        <h4 style="color:#535c68;letter-spacing: 1;">Just three simple steps</h4>
+                        <div style="display: flex;flex-direction: row;margin-top: 50px;">
+
+                            <div class="card">
+                                <img src="/images/card1.gif" style="width: 100px;height: 80px;">
+                                <h4>Select a Template</h4>
+                            </div>
+                            <div class="card">
+                                <img src="/images/card2.gif" style="width: 100px;height: 80px;">
+                                <h4>Answer a few questions</h4>
+                            </div>
+                            <div class="card">
+                                <img src="/images/card3.gif" style="width: 100px;height: 80px;">
+                                <h4>Click Finalize and You're done</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main1" id="section3">
+                        <h1 style="margin-bottom: 40px;">
+                            FEATURES
+                        </h1>
+                        <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                            class="mySwiper" thumbs-swiper=".mySwiper2" loop="true" space-between="10"
+                            navigation="true">
+                            <swiper-slide style="display: flex;flex-direction:column;background-color: transparent;">
+                                <div style="font-weight: bold;margin: 5px;font-size: 25px;">What else our users can do!
+                                </div>
+                                <img src="/images/form4.png" />
+                            </swiper-slide>
+                            <swiper-slide style="display: flex;flex-direction:column;background-color: transparent;">
+                                <div style="font-weight: bold;margin: 5px;font-size: 25px;">Choose template and build
+                                    resume!</div>
+                                <img src="/images/form12.png" />
+                            </swiper-slide>
+                            <swiper-slide style="display: flex;flex-direction:column;background-color: transparent;">
+                                <div style="font-weight: bold;margin: 5px;font-size: 25px;">Contributors can choose any
+                                    plan,contribute their designs and earn!</div>
+                                <img src="/images/form19.png" />
+                            </swiper-slide>
+                            <swiper-slide style="display: flex;flex-direction:column;background-color: transparent;">
+                                <div style="font-weight: bold;margin: 5px;font-size: 25px;">Contributors can watch their
+                                    progress as well!</div>
+                                <img src="/images/form20.png" />
+                            </swiper-slide>
+
+                        </swiper-container>
+
+                        <swiper-container class="mySwiper2" loop="true" space-between="10" slides-per-view="4"
+                            free-mode="true" watch-slides-progress="true">
+                            <swiper-slide>
+                                <img src="/images/form4.png" />
+                            </swiper-slide>
+                            <swiper-slide>
+                                <img src="/images/form12.png" />
+                            </swiper-slide>
+                            <swiper-slide>
+                                <img src="/images/form19.png" />
+                            </swiper-slide>
+                            <swiper-slide>
+                                <img src="/images/form20.png" />
+                            </swiper-slide>
+                        </swiper-container>
+
+                    </div>
+                    <div class="main1" id="section4">
+                        <h1 style="margin-bottom: 40px;">CONTRIBUTOR PLANS</h1>
+                        <div
+                            style="display: flex;justify-content: center;align-items: center;flex-direction:row;gap:30px">
+                            <div class="card1">
+                                <div class="heading">NO COST PLAN</div>
+                                <div style="font-size: 18px;padding: 25px;">
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Normal Design.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Basic Customization Options.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload in image or pdf format.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> If your approved template will be
+                                        used by atleast 3 users then you will get benefited.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Copyright will be mentioned on the
+                                        template.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Performance based goddies
+                                        available.</p>
+                                </div>
+                               
+                            </div>
+                            <div class="card2">
+                                <div class="heading">CALL TO ACTION</div>
+                                <div class="heading">PLAN</div>
+                                <div style="font-size: 18px;padding: 25px;">
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> High Quality Design</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Design in our requested format
+                                        only.
+                                    </p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Design template in HTML, CSS and
+                                        JavaScript.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload code in text file.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Cost based on the number of times
+                                        their
+                                        template designs are downloaded or used by users.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Additional goddies.</p>
+                                    <p>&#x27A2; &#x20b9; 29 per template.</p>
+                                </div>
+                               
+                            </div>
+                            <div class="card1">
+                                <div class="heading">ROYALTY PLAN</div>
+                                <div style="font-size: 18px;padding: 25px;">
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> High Quality Design</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Design template in HTML, CSS and
+                                        JavaScript.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Upload code in text file.</p>
+                                    <p><span style="color: #0c6f8b;">&#x27A2;</span> Cost based on the number of times
+                                        their
+                                        template designs are downloaded or used by users.</p>
+                                    <p>&#x27A2; &#x20b9; 19 per template.</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        </div>
+                        <form action="/landing/insertqueryinfo" id="submit-form" method="post">
+                            <div class="main1" id="section5" style="margin-bottom: 150px;">
+                                <h1>CONTACT US</h1>
+                                <div style="display: flex;flex-direction: column;float: left;width: 800px;;">
+                                    <div>
+                                        <input type="text" placeholder="First Name" name="fname" pattern="[A-Z][a-z]*" title="First Name only contains lowercase and uppercase letters and can only starts with a capital letter.">
+                                        <input type="text" placeholder="Last Name" name="lname" pattern="[A-Z][a-z]*" title="Last Name only contains lowercase and uppercase letters and can only starts with a capital letter.">
+                                    </div>
+                                    <div>
+                                        <input type="tel" placeholder="Mobile Number" name="number" pattern="[6789][0-9]{9}" title="Invalid Mobile Number" required>
+                                        <input type="email" placeholder="Email" name="mail" required>
+                                    </div>
+                                    <textarea style="height: 100px;border-radius: 5px;width: 93%;margin: 10px;resize: none;"
+                                        placeholder="Write your query here" name="Content" maxlength="300" required></textarea>
+                                    <input type='submit'>
+                                </div>
+                            </div>
+                        </form>
+                        <%- include('LoginCard')%>
+                        <%- include('adminLogin')%>
+                        <div style="background-color: #fff;height:auto;padding: 20px;position:relative;margin-bottom: 0;">
+                            <div class="middle" style="display: flex;justify-content: center;gap: 10px;margin-bottom: 20px;">
+                                <a href="#section1" style="text-decoration: none;">HOME</a>
+                                <a href="#section2" style="text-decoration: none;">SERVICES</a>
+                                <a href="#section3" style="text-decoration: none;">FEATURES</a>
+                                <a href="#section4" style="text-decoration: none;">PLANS</a>
+                                <a href="#section5" style="text-decoration: none;">CONTACT US</a>
+                            </div>
+                            <hr style="color: grey;">
+                            <div style="display: flex;justify-content: space-between;gap: 10px;">
+                                <div style="color: grey;">Support - ayushisaxena1610@gmail.com</div>
+                                <div style="color: grey;">&#169; 2023, All rights reserved</div>
+                            </div>
+
+                        </div>
+                       
+                                <script type="text/javascript" src="/javascripts/landing.js">
+                                </script>
+                                <script
+                                    src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+</body>
+
 </html>

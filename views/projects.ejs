@@ -48,18 +48,18 @@
            <div class="section2"  id="project_fields">
               <input type="hidden" name="user" value="<%=id%>">
               <div style="display: flex;flex-direction: row;width:100%;">
-                 <input type="text" placeholder="Name" name="projectname">
+                 <input type="text" placeholder="Name" name="projectname" pattern="[a-zA-Z0-9&. ]*" required><span style="color: red;margin-top: 10px;">*</span>
                  <select required name="type">
-                    <option>Role </option>
+                    <option value="">Role </option>
                     <option value="developer">Developer</option>
                     <option value="tester">Tester</option>
                     <option value="analyst">Analyst</option>
-                 </select>
-                 <input type="text" name="projectlink" placeholder="GitHub link/others">
+                 </select><span style="color: red;margin-top: 10px;">*</span>
+                 <input type="text" name="projectlink" placeholder="GitHub link/others" required><span style="color: red;margin-top: 10px;">*</span> 
   
               </div>
               <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Brief Description"
-                 name="projectdesc" maxlength="200"></textarea>
+                 name="projectdesc" maxlength="400"></textarea>
            </div>
            <input type="button" class="repeatproject" onclick="project_fields()" value="&#43; Add More" style="width: 12%;">
            <input type="submit" value="Save and Next &#x2192;">
@@ -78,7 +78,7 @@
                 divtest.setAttribute("class", "removeclass" + project);
                 divtest.setAttribute("style", "width:100%");
                 var rdiv = 'removeclass' + project;
-                divtest.innerHTML = ' <div style="display:flex;flex-direction:row; width:100%;"><div style="display:flex;flex-direction:column;width:100%"><div style="display: flex;flex-direction: row;"><input type="text" placeholder="Name" name="projectname"><select required name="type"><option>Role </option><option value="developer">Developer</option><option value="tester">Tester</option><option value="analyst">Analyst</option></select><input type="text" name="projectlink" placeholder="GitHub link/others"></div><textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Brief Description" name="projectdesc" maxlength="200"></textarea></div><input type="button" value="-"  onclick="remove_project_fields(' + project + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:5%;cursor: pointer;border: none;height: 35px;"></div>';
+                divtest.innerHTML = ' <div style="display:flex;flex-direction:row; width:100%;"><div style="display:flex;flex-direction:column;width:100%"><div style="display: flex;flex-direction: row;"><input type="text" placeholder="Name" name="projectname"><span style="color: red;margin-top: 10px;">*</span><select required name="type"><option>Role </option><option value="developer">Developer</option><option value="tester">Tester</option><option value="analyst">Analyst</option></select><span style="color: red;margin-top: 10px;">*</span><input type="text" name="projectlink" placeholder="GitHub link/others"><span style="color: red;margin-top: 10px;">*</span></div><textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Brief Description" name="projectdesc" maxlength="200"></textarea></div><input type="button" value="-"  onclick="remove_project_fields(' + project + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:5%;cursor: pointer;border: none;height: 35px;"></div>';
 
                 objTo.appendChild(divtest)
                 add++;

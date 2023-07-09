@@ -59,18 +59,18 @@
                     <input type="hidden" name="exid" value="<%=row.experienceid%>">
                     <div style="display: flex;flex-direction: row;width: 100%;">
                         <div class="labeledfield">
-                            <label>Company Name</label>
-                            <input type="text" name="cname" value="<%=row.company%>">
+                            <label>Company Name <span style="color: red;">*</span></label>
+                            <input type="text" name="cname" value="<%=row.company%>" pattern="[A-Za-z0-9& .]*" required>
                         </div>
                         <div class="labeledfield">
-                            <label>Duration</label>
-                            <input type="text" name="time" value="<%=row.timeperiod%>">
+                            <label>Duration <span style="color: red;">*</span></label>
+                            <input type="text" name="time" value="<%=row.timeperiod%>" required pattern="^[\d\s.a-zA-Z]+$">
                         </div>
                     </div>
                     <div class="labeledfield">
-                        <label>Description</label>
+                        <label>Description <span style="color: red;">*</span></label>
                         <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;"
-                            name="desc"><%=row.description%></textarea>
+                            name="desc" maxlength="400" required><%=row.description%></textarea>
                     </div>
                 </div>
                 <%})%>

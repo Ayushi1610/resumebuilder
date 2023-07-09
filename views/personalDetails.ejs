@@ -50,21 +50,25 @@
          <div class="section1">
                <input type="hidden" name="user" value="<%=id%>">
                <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
-                  <input type="text" name="fname" required placeholder="First Name">
-                  <input type="text" name="lname" required placeholder="Last Name">
+                  <input type="text" name="fname" required placeholder="First Name" pattern="[A-Z][A-Za-z]+" title="First Name must contain letters and first letter should be capital, Spaces are not allowed."><span style="color: red;margin-top: 10px;">*</span>
+                  <input type="text" name="lname" required placeholder="Last Name" pattern="[A-Z][A-Za-z]+" title="Last Name must contain letters and first letter should be capital, Spaces are not allowed."><span style="color: red;margin-top: 10px;">*</span>
                </div>
                <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
-                  <input type="email" name="email" required placeholder="Email">
-                  <input type="tel" name="phone" required placeholder="Mobile Number"  pattern="[0-9]{10}">
+                  <input type="email" name="email" required placeholder="Email"><span style="color: red;margin-top: 10px;">*</span>
+                  <input type="tel" name="phone" required placeholder="Mobile Number"  pattern="[0-9]{10}"><span style="color: red;margin-top: 10px;">*</span>
                </div>
                <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
-                  <input type="text" name="designation" required placeholder="Designation">
+                  <input type="text" name="designation" required placeholder="Designation" pattern="[a-zA-Z ]*"><span style="color: red;margin-top: 10px;">*</span>
                   <input type="text" name="linkedin" placeholder="LinkedIn Account">
                </div>
                <div style="display: flex;flex-direction: column;width: 100%;margin-bottom: 10px;">
-                  <input type="text" name="address" required placeholder="Address">
-                  <input type="text" name="objective" required placeholder="Career Objective">
-                  <input type="file" name="photo" placeholder="Uplaod Picture">
+                  <div style="display: flex;flex-direction: row;">
+                  <input type="text" name="address" required placeholder="Address"><span style="color: red;margin-top: 10px;">*</span>
+               </div>
+               <div style="display: flex;flex-direction: row;">
+                  <input type="text" name="objective" required placeholder="Career Objective" maxlength="400"><span style="color: red;margin-top: 10px;">*</span>
+               </div>
+                  <input type="file" name="photo" placeholder="Uplaod Picture" required>
                </div>
                <input type="submit" value="Save and Next &#x2192;">
             </div>

@@ -59,16 +59,15 @@
                 
                <input type="hidden" name="aid" value="<%=row.awardsid%>">
                <div style="width: 100%;">
-                  <span style="color: #2291af;margin-right: 20px;">Valid</span>
-                  <input type="date" name="validfrom" style="width: 20%;margin-right: 50px;"
-                     value="<%=row.validfrom%>">To
-                  <input type="date" name="validto" style="width: 20%;margin-left: 50px;" value="<%=row.validto%>">
+                  <span style="color: #2291af;margin-right: 20px;">Date Issued <span style="color: red;">*</span></span>
+                  <input type="date" name="issuedate" style="width: 20%;margin-right: 50px;"
+                     value="<%=row.issuedate%>" required>
                </div>
                <div class="labeledfield">
-                  <label>Description</label>
+                  <label>Description <span style="color: red;">*</span></label>
                   <textarea id="limit" name="award_desc"
                      style="height:50px;border-radius: 5px;width: 97%;margin: 10px;"
-                     name="Content"><%=row.award_desc%></textarea>
+                     name="Content" required maxlength="400"><%=row.award_desc%></textarea>
                </div>
             </div>
             <%})%>

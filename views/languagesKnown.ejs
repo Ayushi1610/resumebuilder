@@ -65,7 +65,7 @@
          var divtest = document.createElement("div");
          divtest.setAttribute("class", "form-group removeclass" + language);
          var rdiv = 'removeclass' + language;
-         divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input  type="text" name="languages" placeholder="Add languages"><button  onclick="remove_language_fields(' + language + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;">-</button> </div>';
+         divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input  type="text" name="languages" placeholder="Add languages" pattern="[a-zA-Z ]*" required><span style="color: red;margin-top: 10px;">*</span><button  onclick="remove_language_fields(' + language + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;">-</button> </div>';
 
          objTo.appendChild(divtest)
       }

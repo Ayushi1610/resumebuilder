@@ -134,13 +134,13 @@
                     </div>
                     <div style="display: flex;flex-direction: row;gap: 30px;margin: 0px 0px 20px 0px;">
 
-                        <div>Target User : 50/month</div>
-                        <div>Target Contributors : 15/month</div>
+                        <div>Target User : 15/month</div>
+                        <div>Target Contributors : 5/month</div>
                         <span class="dot"></span>Users
                         <span class="dot" style="background-color: yellow;"></span>Contributors
                     </div>
-                    <%const userper=Math.round((graph1count/50)*100)%>
-                        <%const contrper=Math.round((graph2count/15)*100)%>
+                    <%const userper=Math.round((graph1count/15)*100)%>
+                        <%const contrper=Math.round((graph2count/5)*100)%>
                             <div style="display: flex;flex-direction: row;gap: 40px;margin:0px 0px 0px 20px;justify-content: center;">
                                 <div class="pie no-round" style="--p:<%=userper%>;--c:#067775;--b:15px;">
                                     <span style="z-index: 10;"><%=userper%>%</span>
@@ -475,8 +475,7 @@
                             <th scope="col">S.No.</th>
                             <th scope="col">User Id</th>
                             <th scope="col">Award id</th>
-                            <th scope="col">Valid From</th>
-                            <th scope="col">Valid To</th>
+                            <th scope="col">Date Issued</th>
                             <th scope="col">Description</th>
                             <th scope="col">Edit/Delete</th>
                         </tr>
@@ -496,10 +495,7 @@
                                             <%=row.awardsid%>
                                         </td>
                                         <td class="oneliner">
-                                            <%=row.validfrom%>
-                                        </td>
-                                        <td class="oneliner">
-                                            <%=row.validto%>
+                                            <%=row.issuedate%>
                                         </td>
                                         <td class="oneliner">
                                             <%=row.award_desc%>

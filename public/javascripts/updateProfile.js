@@ -30,5 +30,5 @@ eye.addEventListener("click", function () {
 })
 
 function login_again(){
-    alert("Credentials changed, Login again")
+    alert("Are you sure, You want to update?")
 }

@@ -47,7 +47,7 @@
                 <h2 style="color: #4bcef3;">Skills & Hobbies</h2>
                 <input type="hidden" name="user" value="<%=id%>">
                 <div class="section2">
-                    <h4 style="color: #2291af;letter-spacing: 1;">Add Skills</h4>
+                    <h4 style="color: #2291af;letter-spacing: 1;">Add Skills <span style="color: red;margin-top: 10px;">*</span></h4>
                     <div id="skill_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;"></div>
                     <div style="display: flex;flex-direction: row;width:40%;">
                         <input type="button" value="Add Skills +" onclick="skill_fields()" class="active anchor"
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="section2">
-                    <h4 style="color: #2291af;letter-spacing: 1;">Add Hobbies</h4>
+                    <h4 style="color: #2291af;letter-spacing: 1;">Add Hobbies <span style="color: red;margin-top: 10px;">*</span></h4>
                     <div id="hobbies_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
                     </div>
                     <div style="display: flex;flex-direction: row;width:40%;">
@@ -74,7 +74,7 @@
                 var divtest = document.createElement("div");
                 divtest.setAttribute("class", "removeskill" + room);
                 var rdiv = 'removeskill' + room;
-                divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input required  type="text" name="skills" placeholder="Add Skills"><input type="button" value="-"  onclick="remove_skill_fields(' + room + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;"></div>';
+                divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input required  type="text" name="skills" placeholder="Add Skills" pattern="[a-zA-Z ]*"><span style="color: red;margin-top: 10px;">*</span><input type="button" value="-"  onclick="remove_skill_fields(' + room + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;"></div>';
 
                 objTo.appendChild(divtest)
                return room;
@@ -90,7 +90,7 @@
                 var divtest = document.createElement("div");
                 divtest.setAttribute("class", "removeclass" + hobby);
                 var rdiv = 'removeclass' + hobby;
-                divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input required type="text" name="hobbies" placeholder="Add Hobbies"><input type="button" value="-"  onclick="remove_hobbies_fields(' + hobby + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;"></div>';
+                divtest.innerHTML = '<div style="display: flex;flex-direction: row;width:100%;" ><input required type="text" name="hobbies" placeholder="Add Hobbies" pattern="[a-zA-Z ]*"><span style="color: red;margin-top: 10px;">*</span><input type="button" value="-"  onclick="remove_hobbies_fields(' + hobby + ');" class="active anchor" style="border-radius: 5px;padding: 8px 8px;width:12%;cursor: pointer;border: none;height: 35px;"></div>';
 
                 objTo.appendChild(divtest)
             }

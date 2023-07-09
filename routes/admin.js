@@ -1687,8 +1687,8 @@ router.post('/adminEducationUpdate', function (req, res) {
 })
 router.post('/adminAwardsUpdate', function (req, res) {
   console.log(req.body, "UPDATEEEEEEEE")
-  pool.query("update awards_achieve set validfrom=?,validto=?,award_desc=? where awardsid=? and userid=?", [req.body.validfrom, req.body.validto, req.body.award_desc, req.body.aid, req.body.userid], function (error, result) {
-    console.log(req.body.validfrom)
+  pool.query("update awards_achieve set issuedate=?,award_desc=? where awardsid=? and userid=?", [req.body.issuedate, req.body.award_desc, req.body.aid, req.body.userid], function (error, result) {
+    console.log(req.body.issuedate)
     if (error) {
       throw error;
     }
@@ -1805,7 +1805,7 @@ router.post('/adminAwardsUpdate', function (req, res) {
 router.post('/adminExperienceUpdate', function (req, res) {
   console.log(req.body, "UPDATEEEEEEEE")
   pool.query("update experience set company=?,timeperiod=?,description=? where experienceid=? and userid=?", [req.body.cname, req.body.time, req.body.desc, req.body.exid, req.body.userid], function (error, result) {
-    console.log(req.body.validfrom)
+    console.log(req.body.issuedate)
     if (error) {
       throw error;
     }

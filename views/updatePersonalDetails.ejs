@@ -69,30 +69,30 @@
                         <input type="hidden" name="user" value="<%=id%>">
                         <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
                             <div class="labeledfield">
-                                <label>First Name</label>
-                            <input type="text" name="fname" required placeholder="First Name" value="<%=result.fname%>">
+                                <label>First Name <span style="color: red;">*</span></label>
+                            <input type="text" name="fname" required placeholder="First Name" value="<%=result.fname%>" pattern="[A-Z][A-Za-z]+">
                             </div>
                             <div class="labeledfield">
-                                <label>Last Name</label>
-                            <input type="text" name="lname" required placeholder="Last Name" value="<%=result.lname%>">
+                                <label>Last Name <span style="color: red;">*</span></label>
+                            <input type="text" name="lname" required placeholder="Last Name" value="<%=result.lname%>" pattern="[A-Z][A-Za-z]+">
                             </div>
                         </div>
                         <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
                             <div class="labeledfield">
-                                <label>Email</label>
+                                <label>Email <span style="color: red;">*</span></label>
                             <input type="email" name="email" required placeholder="Email" value="<%=result.pemail%>">
                             </div>
                             <div class="labeledfield">
-                                <label>Mobile Number</label>
+                                <label>Mobile Number <span style="color: red;">*</span></label>
                             <input type="tel" name="phone" required placeholder="Mobile Number" pattern="[0-9]{10}"
                                 value="<%=result.mobile%>">
                             </div>
                         </div>
                         <div style="display: flex;flex-direction: row;width: 100%;margin-bottom: 10px;">
                             <div class="labeledfield">
-                                <label>Designation</label>
+                                <label>Designation <span style="color: red;">*</span></label>
                             <input type="text" name="designation" required placeholder="Designation"
-                                value="<%=result.designation%>">
+                                value="<%=result.designation%>" pattern="[a-zA-Z ]*">
                             </div>
                             <div class="labeledfield">
                                 <label>LinkedIn</label>
@@ -102,14 +102,14 @@
                         </div>
                         <div style="display: flex;flex-direction: column;width: 100%;margin-bottom: 10px;">
                             <div class="labeledfield">
-                                <label>Address</label>
+                                <label>Address <span style="color: red;">*</span></label>
                             <input type="text" name="address" required placeholder="Address"
                                 value="<%=result.address%>">
                             </div>
                             <div class="labeledfield">
-                                <label>Career Objective</label>
+                                <label>Career Objective <span style="color: red;">*</span></label>
                             <input type="text" name="objective" required placeholder="Career Objective"
-                                value="<%=result.objective%>">
+                                value="<%=result.objective%>" maxlength="400">
                             </div>
                             <div class="labeledfield">
                                 <label>Picture</label>

@@ -93,15 +93,15 @@ router.post('/insertexperiencedetails', function (req, res) {
 router.post('/insertawarddetails', function (req, res) {
   const data = [req.body];
   var len = 0;
-  if (req.body.validfrom != null) {
-    len = (req.body.validfrom).length;
+  if (req.body.issuedate != null) {
+    len = (req.body.issuedate).length;
   }
   console.log(data)
   console.log('Length:', len);
-  if (Array.isArray(req.body.validfrom)) {
+  if (Array.isArray(req.body.issuedate)) {
     for (i = 0; i < len; i++) {
-      if (req.body.validfrom[i].length != 0) {
-        pool.query("insert into awards_achieve(userid,validfrom,validto,award_desc) values(?,?,?,?)", [req.body.user, req.body.validfrom[i], req.body.validto[i], req.body.award_desc[i]], function (error, result) {
+      if (req.body.issuedate[i].length != 0) {
+        pool.query("insert into awards_achieve(userid,issuedate,award_desc) values(?,?,?)", [req.body.user, req.body.issuedate[i], req.body.award_desc[i]], function (error, result) {
           if (error) {
             console.log("Error:", error)
             res.render("awardsAchievements", { id: req.body.user })
@@ -116,7 +116,7 @@ router.post('/insertawarddetails', function (req, res) {
   else {
     if (len != 0) {
 
-      pool.query("insert into awards_achieve(userid,validfrom,validto,award_desc) values(?,?,?,?)", [req.body.user, req.body.validfrom, req.body.validto, req.body.award_desc], function (error, result) {
+      pool.query("insert into awards_achieve(userid,issuedate,award_desc) values(?,?,?)", [req.body.user, req.body.issuedate, req.body.award_desc], function (error, result) {
         if (error) {
           console.log("Error:", error)
           res.render("awadsAchievements", { id: req.body.user })

@@ -57,7 +57,7 @@
         <%result.forEach((row)=>{%>
             <div style="display: flex;flex-direction: row;width:20%;margin-right: 10px;">
                <input type="hidden" name="lid" value="<%=row.languagesid%>">
-               <input type="text" name="languages" value="<%=row.languages%>">
+               <input type="text" name="languages" value="<%=row.languages%>" pattern="[a-zA-Z ]*" required><span style="color: red;margin-top: 10px;">*</span>
             </div>
             <%})%>
         </div>

@@ -26,7 +26,7 @@ $('.links a').click(function (e) {
        e.preventDefault();
        var $self = $(this);
        if (acount < 3) {
-          $self.before($self.prev('div').append('<div style="width: 100%;"><span style="color: #4bcef3;margin-right: 20px;">Valid</span><input type="date" name="validfrom" style="width: 20%;margin-right: 50px;">To<input name="validto" type="date" style="width: 20%;margin-left: 50px;"></div><textarea name="award_desc" maxlength="150" style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Details" ></textarea>'));
+          $self.before($self.prev('div').append('<div style="width: 100%;"><span style="color: #4bcef3;margin-right: 20px;">Date Issued</span><input type="date" name="issuedate" style="width: 20%;margin-right: 50px;"></div><textarea name="award_desc" maxlength="150" style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" placeholder="Details" ></textarea>'));
           // $self.remove();
           acount++
        }

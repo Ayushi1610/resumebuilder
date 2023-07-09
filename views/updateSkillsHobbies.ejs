@@ -55,23 +55,23 @@
             <form action="/landing/updateSkillsHobbies" method="post" style="display:flex;justify-content: center;align-items: center;flex-direction: column;width: 100%;">
             <input type="hidden" name="user" value="<%=id%>">
                 <div class="section2">
-                    <h4 style="color: #2291af;letter-spacing: 1;">Skills</h4>
+                    <h4 style="color: #2291af;letter-spacing: 1;">Skills <span style="color: red;">*</span></h4>
                     <div style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
                        <%result1.forEach((row)=>{%>
                           <div style="display: flex;flex-direction:column;width:20%;margin-right: 10px;">
                              <input type="hidden" name="sid" value="<%=row.skillid%>">
-                             <input type="text" name="skills" value="<%=row.skill%>">
+                             <input type="text" name="skills" value="<%=row.skill%>" pattern="[a-zA-Z ]*" required>
                           </div>
                           <%})%>
                     </div>
                  </div>
                  <div class="section2">
-                    <h4 style="color: #2291af;letter-spacing: 1;">Hobbies</h4>
+                    <h4 style="color: #2291af;letter-spacing: 1;">Hobbies <span style="color: red;">*</span></h4>
                     <div id="hobbies_fields" style="display: flex;flex-direction: row;width:100%;flex-wrap: wrap;">
                        <%result2.forEach((row)=>{%>
                           <div style="display: flex;flex-direction:column;width:20%;margin-right: 10px;">
                              <input type="hidden" name="hid" value="<%=row.hobbyid%>">
-                             <input type="text" name="hobbies" value="<%=row.hobbies%>">
+                             <input type="text" name="hobbies" value="<%=row.hobbies%>" pattern="[a-zA-Z ]*" required>
                           </div>
                           <%})%>
                     </div>

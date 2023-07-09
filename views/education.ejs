@@ -49,26 +49,26 @@
                     <input type="hidden" name="user" value="<%=id%>">
                     <h4 style="color: #2291af;letter-spacing: 1;">SSC Details</h4>
                     <div style="display: flex;flex-direction: row;width:100%;">
-                        <input type="text" required name="sscyear" placeholder="Passing Year">
-                        <input type="text" required name="sscper" placeholder="Percentage">
+                        <input type="text" required name="sscyear" placeholder="Passing Year" pattern="[12][0-9]{3}" title="Enter in YYYY format"><span style="color: red;margin-top: 10px;">*</span>
+                        <input type="text" required name="sscper" placeholder="Percentage" pattern="[0-9]{1,2}?(\.[0-9]{1,2})?" ><span style="color: red;margin-top: 10px;">*</span>
                     </div>
                     <h4 style="color: #2291af;letter-spacing: 1;">HSC Details</h4>
                     <div style="display: flex;flex-direction: row;width: 100%;">
-                        <input type="text" required name="hscyear" placeholder="Passing Year">
-                        <input type="text" required name="hscper" placeholder="Percentage">
-                        <input type="text" required name="hscspec" placeholder="Specialization">
+                        <input type="text" required name="hscyear" placeholder="Passing Year" pattern="[12][0-9]{3}" title="Enter in YYYY format"><span style="color: red;margin-top: 10px;">*</span>
+                        <input type="text" required name="hscper" placeholder="Percentage" pattern="[0-9]{1,2}?(\.[0-9]{1,2})?"><span style="color: red;margin-top: 10px;">*</span>
+                        <input type="text" required name="hscspec" placeholder="Specialization" maxlength="150" ><span style="color: red;margin-top: 10px;">*</span>
                     </div>
                     <h4 style="color: #2291af;letter-spacing: 1;">Undergraduation Details</h4>
                     <div style="display: flex;flex-direction: row;width: 100%;">
-                        <input type="text" required name="ugyear" placeholder="Passing Year">
-                        <input type="text" required name="ugper" placeholder="CGPA">
-                        <input type="text" required name="ugspec" placeholder="Specialization">
+                        <input type="text" required name="ugyear" placeholder="Passing Year" pattern="[12][0-9]{3}" title="Enter in YYYY format"><span style="color: red;margin-top: 10px;">*</span>
+                        <input type="text" required name="ugper" placeholder="CGPA" pattern="[0-9]{1,2}?(\.[0-9]{1,2})?"><span style="color: red;margin-top: 10px;">*</span>
+                        <input type="text" required name="ugspec" placeholder="Specialization" maxlength="150"><span style="color: red;margin-top: 10px;">*</span>
                     </div>
                     <h4 style="color: #2291af;letter-spacing: 1;">Postgraduation Details</h4>
                     <div style="display: flex;flex-direction: row;width: 100%;">
-                        <input type="text" name="pgyear" placeholder="Passing Year">
-                        <input type="text" name="pgper" placeholder="CGPA">
-                        <input type="text" name="pgspec" placeholder="Specialization">
+                        <input type="text" name="pgyear" placeholder="Passing Year" pattern="[12][0-9]{3}" title="Enter in YYYY format">
+                        <input type="text" name="pgper" placeholder="CGPA" pattern="[0-9]{1,2}?(\.[0-9]{1,2})?">
+                        <input type="text" name="pgspec" placeholder="Specialization" maxlength="150">
                     </div>
 
                 </div>

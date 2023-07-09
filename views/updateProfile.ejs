@@ -10,18 +10,18 @@
             <hr>
         </div>
             <div class="section" style="margin-top: 20px;">
-                <label>Name</label>
-                <input type="text" name="uname" value="<%=result.name%>">
+                <label>Name <span style="color: red;">*</span></label>
+                <input type="text" name="uname" value="<%=result.name%>" pattern="[A-Z][A-Za-z\s]+" required title="Name must contain letters and first letter should be capital.">
             </div>
             <div class="section">
-                <label>Email</label>
-                <input type="email" name="mail" value="<%=result.email%>">
+                <label>Email <span style="color: red;">*</span></label>
+                <input type="email" name="mail" value="<%=result.email%>" required>
             </div>
             <div class="section">
-                <label>Password</label>
+                <label>Password <span style="color: red;">*</span></label>
                 <p class="inputicons" style="display: flex;flex-direction: row;">
                 <i class="fa fa-eye icon" id="eye"></i>
-                <input type="password" name="password" value="<%=result.password%>" name="password" id="password" style="padding-left: 25px;">
+                <input type="password" name="password" value="<%=result.password%>" name="password" id="password" style="padding-left: 25px;" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             </p>
             </div>
             <div class="section">

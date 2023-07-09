@@ -59,11 +59,11 @@
                <input type="hidden" name="prid" value="<%=row.projectid%>">
                <div style="display: flex;flex-direction: row;width:100%;">
                   <div class="labeledfield">
-                     <label>Project Name</label>
-                     <input type="text" name="projectname" value="<%=row.projectname%>">
+                     <label>Project Name <span style="color: red;">*</span></label>
+                     <input type="text" name="projectname" value="<%=row.projectname%>" pattern="[a-zA-Z0-9&. ]*" required>
                   </div>
                   <div class="labeledfield">
-                     <label>Your Role</label>
+                     <label>Your Role <span style="color: red;">*</span></label>
                      <select required name="type">
                         <option>
                            <%=row.role%>
@@ -74,15 +74,15 @@
                      </select>
                   </div>
                   <div class="labeledfield">
-                     <label>Project Link</label>
-                     <input type="text" name="projectlink" value="<%=row.projectlink%>">
+                     <label>Project Link <span style="color: red;">*</span></label>
+                     <input type="text" name="projectlink" value="<%=row.projectlink%>" required>
                   </div>
 
                </div>
                <div class="labeledfield">
                   <label>Description</label>
                   <textarea style="height:50px;border-radius: 5px;width: 97%;margin: 10px;" name="projectdesc"
-                     maxlength="200"><%=row.projectdesc%></textarea>
+                  maxlength="400"><%=row.projectdesc%></textarea>
                </div>
             </div>
             <%})%>

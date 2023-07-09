@@ -59,22 +59,22 @@
                         <div
                             style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 20px;width: 100%;margin: 8px;">
                             <div class="labeledfield">
-                                <label>First Name</label>
-                                <input type="text" name="fname" placeholder="First Name" required>
+                                <label>First Name <span style="color: red;">*</span></label>
+                                <input type="text" name="fname" placeholder="First Name" required pattern="[A-Z][a-z]*" title="First Name only contains lowercase and uppercase letters and can only starts with a capital letter.">
                             </div>
                             <div class="labeledfield">
-                                <label>Last Name</label>
-                                <input type="text" name="lname" placeholder="Last Name">
+                                <label>Last Name <span style="color: red;">*</span></label>
+                                <input type="text" name="lname" required placeholder="Last Name" pattern="[A-Z][a-z]*" title="Last Name only contains lowercase and uppercase letters and can only starts with a capital letter.">
                             </div>
                         </div>
                         <div
                             style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 20px;width: 100%;">
                             <div class="labeledfield">
-                                <label>Mobile Number</label>
+                                <label>Mobile Number <span style="color: red;">*</span></label>
                                 <input type="text" name="mobile" placeholder="Mobile Number" required  pattern="[0-9]{10}">
                             </div>
                             <div class="labeledfield">
-                                <label>Email</label>
+                                <label>Email <span style="color: red;">*</span></label>
                                 <input type="email" name="email" placeholder="Email" value="<%=result.email%>" required>
                             </div>
 
@@ -88,12 +88,13 @@
                                     Plan</option>
                                 <option value="Call to action plan" <%=plan=='Call to Action' ? 'selected' : 'disabled'
                                     %>>Call to Action Plan</option>
-                            </select>
+                            </select><span style="color: red;">*</span>
+                        </select>
                         </div>
                         <div style="display: flex;flex-direction: row;gap: 20px;width: 98%;margin: 10px;">
                             <div class="labeledfield">
                                 <label>Description</label>
-                                <textarea placeholder="Description" style="width: 100%;" name="desc" ></textarea>
+                                <textarea placeholder="Description" style="width: 100%;" name="desc" maxlength="600"></textarea>
                             </div>
                         </div>
                         <%if(plan=='No Cost Plan'){%>
@@ -110,13 +111,13 @@
                             <%}%>
                             <%if(plan == 'Royalty' || plan == 'Call to Action'){%>
                         <div style="display: flex;flex-direction: row;gap: 20px;width: 100%;">
-                            <div style="color:#2291af;margin-left: 15px;">Upload Code Here</div>
+                            <div style="color:#2291af;margin-left: 15px;">Upload Code Here <span style="color: red;">*</span></div>
                             <label for="choose-code" class="custom-file-upload" id="choose-file-label"
                                 style="width: 50%;display:flex;align-items: center;justify-content: center;">
-                                Upload
+                                Upload 
                             </label>
                             <input  type="file" name="design" id="choose-code" accept=".txt"
-                                style="display: none;"/>
+                                style="display: none;" required/>
                             </div>
                             <%}%>
                         <input type="submit"

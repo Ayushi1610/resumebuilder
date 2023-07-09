@@ -21,7 +21,7 @@ router.get('/register', function (req, res) {
   res.render("Registration", { message: null })
 })
 router.post('/insertregisterinfo', function (req, res) {
-  pool.query("select * from registration where email=? or password=?", [req.body.mail, req.body.password], function (error, result) {
+  pool.query("select * from registration where email=? and password=?", [req.body.mail, req.body.password], function (error, result) {
     if (result.length > 0) {
       console.log("Already Registered")
       res.render("LandingPage", { message: "Already Registered", message1: null })
@@ -71,110 +71,116 @@ router.post('/adminlogin', function (req, res) {
     console.log(req.body)
     if (error) { throw error }
     else {
-      pool.query("select count(*) as count1 from registration where type='user'", function (error, result1) {
-        if (error) { throw error }
-        else {
-          pool.query("select count(*) as count2 from registration where type='contributor'", function (error, result2) {
-            if (error) { throw error }
-            else {
-              pool.query("select count(*) as count3 from templateinfo", function (error, result3) {
-                if (error) { throw error }
-                else {
-                  var month = new Date().getMonth() + 1;
-                  console.log(month)
-                  pool.query("select count(*) as count4 from registration where month(date)=? and type='user'", [month], function (error, result4) {
-                    if (error) { throw error }
-                    else {
-                      pool.query("select count(*) as count5 from registration where month(date)=? and type='contributor'", [month], function (error, result5) {
-                        if (error) { throw error }
-                        else {
-                          pool.query("select * from registration where type='user'", function (error, result6) {
-                            if (error) { throw error }
-                            else {
-                              pool.query("select * from registration where type='contributor'", function (error, result7) {
-                                if (error) { throw error }
-                                else {
-                                  pool.query("select * from personal_details", function (error, result8) {
-                                    if (error) { throw error }
-                                    else {
-                                      pool.query("select * from education", function (error, result9) {
-                                        if (error) { throw error }
-                                        else {
-                                          pool.query("select * from awards_achieve", function (error, result10) {
-                                            if (error) { throw error }
-                                            else {
-                                              pool.query("select * from experience", function (error, result11) {
-                                                if (error) { throw error }
-                                                else {
-                                                  pool.query("select * from project", function (error, result12) {
-                                                    if (error) { throw error }
-                                                    else {
-                                                      pool.query("select * from skills", function (error, result13) {
-                                                        if (error) { throw error }
-                                                        else {
-                                                          pool.query("select * from hobbies", function (error, result14) {
-                                                            if (error) { throw error }
-                                                            else {
-                                                              pool.query("select * from languages", function (error, result15) {
-                                                                if (error) { throw error }
-                                                                else {
-                                                                  pool.query("select * from userfeedback", function (error, result16) {
-                                                                    if (error) { throw error }
-                                                                    else {
-                                                                      pool.query("select * from contactus", function (error, result17) {
-                                                                        if (error) { throw error }
-                                                                        else {
-                                                                          pool.query("select * from contribution_req", function (error, result18) {
-                                                                            if (error) { throw error }
-                                                                            else {
-                                                                              console.log(result4[0].count4, result6)
-                                                                              res.render("adminInterface", { usercount: result1[0].count1, contributorcount: result2[0].count2, templatecount: result3[0].count3, graph1count: result4[0].count4, month: month, graph2count: result5[0].count5, userData: result6, result: result[0], contributorData: result7, personalData: result8, educationData: result9, awardsData: result10, experienceData: result11, projectData: result12, skillData: result13, hobbyData: result14, languageData: result15, feedbackData: result16, queryData: result17, requestData: result18 })
-                                                                            }
-                                                                          })
-
-                                                                        }
-                                                                      })
-
-                                                                    }
-                                                                  })
-
-                                                                }
-                                                              })
-
-                                                            }
-                                                          })
-
-                                                        }
-                                                      })
-
-                                                    }
-                                                  })
-
-                                                }
-                                              })
-
-                                            }
-                                          })
-                                        }
-                                      })
-                                    }
-                                  })
-                                }
-                              })
-
-                            }
-                          })
-                        }
-                      })
-
-                    }
-                  })
-                }
-              })
-            }
-          })
-        }
-      })
+      if(result.length == 0){
+        res.render("LandingPage",{ message:null, message1: 'Invalid Email/Password' })
+      }
+      else{
+        pool.query("select count(*) as count1 from registration where type='user'", function (error, result1) {
+          if (error) { throw error }
+          else {
+            pool.query("select count(*) as count2 from registration where type='contributor'", function (error, result2) {
+              if (error) { throw error }
+              else {
+                pool.query("select count(*) as count3 from templateinfo", function (error, result3) {
+                  if (error) { throw error }
+                  else {
+                    var month = new Date().getMonth() + 1;
+                    console.log(month)
+                    pool.query("select count(*) as count4 from registration where month(date)=? and type='user'", [month], function (error, result4) {
+                      if (error) { throw error }
+                      else {
+                        pool.query("select count(*) as count5 from registration where month(date)=? and type='contributor'", [month], function (error, result5) {
+                          if (error) { throw error }
+                          else {
+                            pool.query("select * from registration where type='user'", function (error, result6) {
+                              if (error) { throw error }
+                              else {
+                                pool.query("select * from registration where type='contributor'", function (error, result7) {
+                                  if (error) { throw error }
+                                  else {
+                                    pool.query("select * from personal_details", function (error, result8) {
+                                      if (error) { throw error }
+                                      else {
+                                        pool.query("select * from education", function (error, result9) {
+                                          if (error) { throw error }
+                                          else {
+                                            pool.query("select * from awards_achieve", function (error, result10) {
+                                              if (error) { throw error }
+                                              else {
+                                                pool.query("select * from experience", function (error, result11) {
+                                                  if (error) { throw error }
+                                                  else {
+                                                    pool.query("select * from project", function (error, result12) {
+                                                      if (error) { throw error }
+                                                      else {
+                                                        pool.query("select * from skills", function (error, result13) {
+                                                          if (error) { throw error }
+                                                          else {
+                                                            pool.query("select * from hobbies", function (error, result14) {
+                                                              if (error) { throw error }
+                                                              else {
+                                                                pool.query("select * from languages", function (error, result15) {
+                                                                  if (error) { throw error }
+                                                                  else {
+                                                                    pool.query("select * from userfeedback", function (error, result16) {
+                                                                      if (error) { throw error }
+                                                                      else {
+                                                                        pool.query("select * from contactus", function (error, result17) {
+                                                                          if (error) { throw error }
+                                                                          else {
+                                                                            pool.query("select * from contribution_req", function (error, result18) {
+                                                                              if (error) { throw error }
+                                                                              else {
+                                                                                console.log(result4[0].count4, result6)
+                                                                                res.render("adminInterface", { usercount: result1[0].count1, contributorcount: result2[0].count2, templatecount: result3[0].count3, graph1count: result4[0].count4, month: month, graph2count: result5[0].count5, userData: result6, result: result[0], contributorData: result7, personalData: result8, educationData: result9, awardsData: result10, experienceData: result11, projectData: result12, skillData: result13, hobbyData: result14, languageData: result15, feedbackData: result16, queryData: result17, requestData: result18 })
+                                                                              }
+                                                                            })
+  
+                                                                          }
+                                                                        })
+  
+                                                                      }
+                                                                    })
+  
+                                                                  }
+                                                                })
+  
+                                                              }
+                                                            })
+  
+                                                          }
+                                                        })
+  
+                                                      }
+                                                    })
+  
+                                                  }
+                                                })
+  
+                                              }
+                                            })
+                                          }
+                                        })
+                                      }
+                                    })
+                                  }
+                                })
+  
+                              }
+                            })
+                          }
+                        })
+  
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+      
     }
   })
 })
@@ -329,7 +335,7 @@ router.post('/updateprofile/:id', function (req, res) {
   })
 })
 router.post('/updatePersonaldetails', function (req, res) {
-  pool.query("update personal_details set fname=?,lname=?,pemail=?,mobile=?,designation=?,linkedin=?,address=?,objective=? where userid=?", [req.body.fname, req.body.lname, req.body.email, req.body.phone, req.body.designation, req.body.linkedin, req.body.address, req.body.objective, req.body.user], function (error, result) {
+  pool.query("update personal_details set fname=?,lname=?,pemail=?,mobile=?,designation=?,linkedin=?,address=?,objective=?,photo=? where userid=?", [req.body.fname, req.body.lname, req.body.email, req.body.phone, req.body.designation, req.body.linkedin, req.body.address, req.body.objective,req.body.photo, req.body.user], function (error, result) {
     if (error) {
       throw error;
     }
@@ -479,8 +485,8 @@ router.post('/updateAwards', function (req, res) {
     else {
       console.log(result[0].count, "Awards")
       if (result[0].count == 1) {
-        pool.query("update awards_achieve set validfrom=?,validto=?,award_desc=? where awardsid=?", [req.body.validfrom, req.body.validto, req.body.award_desc, req.body.aid], function (error, result) {
-          console.log(req.body.validfrom)
+        pool.query("update awards_achieve set issuedate=?,award_desc=? where awardsid=?", [req.body.issuedate, req.body.award_desc, req.body.aid], function (error, result) {
+          console.log(req.body.issuedate)
           if (error) {
             throw error;
           }
@@ -493,8 +499,8 @@ router.post('/updateAwards', function (req, res) {
       else {
 
         for (var i = 0; i <= result[0].count; i++) {
-          pool.query("update awards_achieve set validfrom=?,validto=?,award_desc=? where awardsid=?", [req.body.validfrom[i], req.body.validto[i], req.body.award_desc[i], req.body.aid[i]], function (error, result) {
-            console.log(req.body.validfrom[i])
+          pool.query("update awards_achieve set issuedate=?,award_desc=? where awardsid=?", [req.body.issuedate[i], req.body.award_desc[i], req.body.aid[i]], function (error, result) {
+            console.log(req.body.issuedate[i])
             if (error) {
               throw error;
             }

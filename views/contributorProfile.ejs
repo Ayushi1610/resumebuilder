@@ -58,12 +58,12 @@
                     <h1>PROFILE</h1>
                     <div style="width: 40%;">
                         <div>
-                            <input type="text" value="<%=result.name%>" name="uname">
-                            <input type="text" value="<%=result.email%>" name="mail">
+                            <input type="text" value="<%=result.name%>" name="uname" pattern="[A-Z][A-Za-z\s]+" required title="Name must contain letters and first letter should be capital.">
+                            <input type="text" value="<%=result.email%>" name="mail" required>
                             <div class="inputicons">
                                 <i class="fa fa-eye icon" id="eye"></i>
                                 <input type="password" value="<%=result.password%>" style="padding-left: 25px;"
-                                    name="password" id="password" required>
+                                    name="password" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                             </div>
                             <input type="text" name="type" value="<%=result.type%>" disabled>
                             <input type="hidden" name="type" value="<%=result.type%>" >
@@ -86,7 +86,7 @@
         })
 
         function login_again(){
-    alert("Credentials changed, Login again")
+    alert("Are you sure, You want to update?")
 }
     </script>
 </body>
