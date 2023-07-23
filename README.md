@@ -8,20 +8,10 @@ I am proud to showcase my resume builder project, meticulously developed using N
 - Elegant HTML and CSS Templates
 - Seamless Node.js Integration
 # DEMO VIDEO OF DIFFERENT MODULES -
-# 1] USER
+# USER
+https://github.com/Ayushi1610/resumebuilder/assets/91489486/9eaf97bf-71e0-4792-9c35-6cfe087af45d
 
 
-https://github.com/Ayushi1610/resumebuilder/assets/91489486/17b08693-4a44-4078-a0c3-4791f32b90f1
-
-# 2] CONTRIBUTOR
-
-
-https://github.com/Ayushi1610/resumebuilder/assets/91489486/298887a4-7073-45a1-b912-067572f97803
-
-# 3] ADMIN
-
-
-https://github.com/Ayushi1610/resumebuilder/assets/91489486/8fefda47-f478-4d4a-8775-d21dfe1155ce
 
 
 
