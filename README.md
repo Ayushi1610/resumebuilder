@@ -10,8 +10,8 @@ I am proud to showcase my resume builder project, meticulously developed using N
 # DEMO VIDEO OF DIFFERENT MODULES -
 # USER
 https://github.com/Ayushi1610/resumebuilder/assets/91489486/9eaf97bf-71e0-4792-9c35-6cfe087af45d
-
-
-
-
+# CONTRIBUTOR
+https://github.com/Ayushi1610/resumebuilder/assets/91489486/4ed87374-344c-45aa-831f-b18a641aec89
+# ADMIN
+https://github.com/Ayushi1610/resumebuilder/assets/91489486/369be681-66ca-42ab-8475-90ebecdc46af
 
