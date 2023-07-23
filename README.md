@@ -12,10 +12,12 @@ I am proud to showcase my resume builder project, meticulously developed using N
 
 
 https://github.com/Ayushi1610/resumebuilder/assets/91489486/17b08693-4a44-4078-a0c3-4791f32b90f1
+
 # 2] CONTRIBUTOR
 
 
 https://github.com/Ayushi1610/resumebuilder/assets/91489486/298887a4-7073-45a1-b912-067572f97803
+
 # 3] ADMIN
 
 
